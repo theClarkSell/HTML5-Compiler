@@ -1,5 +1,4 @@
-# Responsible Web Design
-
+# JavaScript API
 ## Prerequisites
 
 ## Steps

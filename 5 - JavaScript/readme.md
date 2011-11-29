@@ -1,4 +1,4 @@
-# Responsible Web Design
+# JavaScript
 
 ## Prerequisites
 
