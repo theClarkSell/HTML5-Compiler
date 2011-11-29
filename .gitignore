@@ -1,0 +1,10 @@
+# build folders
+obj
+TestResults
+
+# resharper folder
+_Resharper.*
+
+# VS solution files
+*.sou
+*.user
