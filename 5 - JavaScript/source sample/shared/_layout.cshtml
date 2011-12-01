@@ -1,0 +1,14 @@
+﻿
+
+@{
+    Layout = "~/shared/_masterLayout.cshtml";
+}
+
+
+@section head {
+    <!-- <script type="text/javascript" src="/scripts/modernizr.custom.86939.js"></script> -->
+    
+    @RenderSection("scripts", required: false)
+}
+
+@RenderBody()

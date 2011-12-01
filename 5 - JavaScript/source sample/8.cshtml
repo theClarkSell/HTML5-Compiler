@@ -1,0 +1,64 @@
+﻿@{
+    Page.Title = "putting it all together";
+}
+
+@section scripts {
+    
+    <script src="/scripts/xhr.js"></script>
+    <script>
+        $(document).ready( function () {
+            
+            $("#submit").click(function () {
+                sendForm(this.form);
+            });
+            
+            $("#dsGet").click(function () {
+                whyNot();
+            });
+            
+            $("#loLinks").click(function () {
+                getLinks( function() {
+                    var links = JSON.parse(this.responseText);
+                    
+                    for ( var i = 0; i < links.length; i++ ) {
+                        var linkName = links[i].Name;
+                        $('#newLinks').append('<p>' + linkName + '</p>');
+                    }
+                    
+                }, $);
+            });
+            
+        });
+    </script>
+}
+
+<form id="createLink" action="">
+    <fieldset>
+        <legend>Add a new link</legend>
+        
+        <div>
+            <label>Name</label>
+            <input type="text" name="Name" id="Name" value="Developer Smackdown"/>    
+        </div>
+        
+        <div>
+            <label>Url</label>
+            <input type="text" name="Url" id="Url" value="http://developerSmackdown.com"/>
+        </div>
+        
+        <div>
+            <label>Description</label>
+            <input type="text" name="Description" id="Description" value="This is where Clark and Mark talk a little software while imbibing on a few beers!"/>
+        </div>
+        
+        <input type="button" id="submit" value="Submit Link"/>
+    </fieldset>
+
+
+</form>
+
+<button id="dsGet">Get From Developer Smackdown</button>
+<button id="loLinks">Get Links LightsOut</button>
+
+<hr/>
+<div id="newLinks"></div>

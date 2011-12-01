@@ -1,0 +1,30 @@
+﻿
+
+@{
+    Layout = "~/shared/_masterLayout.cshtml";
+}
+
+
+@section head {
+
+    <link rel="stylesheet" href="/style/qunit.css" />
+
+    <script src="/scripts/testing/qunit.js"></script>
+    <script src="/scripts/testing/jsmock.js"></script>
+    <script src="/scripts/testing/jqMock.js"></script>
+    
+    @RenderSection("tests", required: false)    
+}
+
+
+<h1 id="qunit-header">JavaScript v.next</h1>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">
+    <div id="header"></div>
+    <img id="pinImg" />
+    <div id="pinDiv"></div>
+    <a id="siteModeLink" href="#">Click it here!</a>
+</div>   

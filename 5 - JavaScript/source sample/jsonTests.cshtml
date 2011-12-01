@@ -1,0 +1,105 @@
+﻿@{
+    Page.Title = "JSON automated tests";
+    Layout = "~/shared/_testLayout.cshtml";
+}
+
+@section tests {
+    <script>
+       
+        var sampleJsonString = '{"firstName":"clark","lastName":"sell"}';
+        var sampleJsonObj = {
+            firstName: 'clark',
+            lastName: 'sell'
+        };
+       
+        test('using json.stringify with simple object', function() {
+
+            var stringifyResult = JSON.stringify(sampleJsonObj);
+            equal(stringifyResult, sampleJsonString);
+        
+        });   
+        
+        test('selective serilization with json.strinify', function() {
+
+            var whiteList = ["firstName"];
+            
+            var stringifyResult = JSON.stringify(sampleJsonObj, whiteList);
+            var expectedString = '{"firstName":"clark"}';
+
+            equal(stringifyResult, expectedString);
+        
+        }); 
+        
+        test('adding one space formatting on stringify ', function() {
+            var sampleJsonString = '{\n "firstName": "clark",\n "lastName": "sell"\n}'; //added one space after :
+            var sampleJsonObj = {
+                firstName: 'clark',
+                lastName: 'sell'
+            };  
+            
+            var stringifyResult = JSON.stringify(sampleJsonObj, null, 1);
+                        
+            equal(stringifyResult, sampleJsonString);
+                    
+        });
+        
+        test('adding a specified string to do the formatting on stringify ', function() {
+            var sampleJsonString = '{\n\t"firstName": "clark",\n\t"lastName": "sell"\n}'; //added one space after :
+            var sampleJsonObj = {
+                firstName: 'clark',
+                lastName: 'sell'
+            };  
+            
+            var stringifyResult = JSON.stringify(sampleJsonObj, null, "\t");
+                        
+            equal(stringifyResult, sampleJsonString);
+                    
+        });
+        
+        
+        test('using json.parse with simple string', function() {
+            var parseResult = JSON.parse(sampleJsonString);
+            
+            equal(parseResult.firstName, 'clark');
+            equal(parseResult.lastName, 'sell');
+            
+        });
+        
+        
+        test('using json.parse with simple string', function() {
+            
+            var sampleJsonString = '{"firstName":"clark","lastName":"sell"}';
+            
+            var newObject = JSON.parse(sampleJsonString);
+            newObject.toJSON = function(key) {
+              console.log(key);  
+            };
+            
+            
+            
+            //var convert = function ( key, value ) {
+                
+            //    if ( key === 'firstName' ) {
+            //        key = "something"
+            //    }  
+                
+            //    return value;
+            //};
+            
+            //var whiteList = ['firstName'];
+            
+            //var parseResult = JSON.parse(sampleJsonString, whiteList);
+            
+            var result = JSON.stringify(newObject);
+            
+            console.log(result);
+            
+            //equal(parseResult.firstName, 'clark something');
+            //equal(parseResult.lastName, undefined);
+            
+            //something
+            
+        });
+        
+    </script>
+}

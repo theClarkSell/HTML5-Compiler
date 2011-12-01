@@ -1,0 +1,43 @@
+﻿@{
+    Page.Title = "xhr with Blobs";
+}
+
+@section scripts {
+    <script>
+
+        var callback = function(e) {
+            if (this.status == 200) {
+                var blob = this.response;
+    
+                var img = document.createElement('img');
+                img.onload = function(e) {
+                    window.URL.revokeObjectURL(img.src);
+                };
+    
+                img.src = window.URL.createObjectURL(blob);
+                $('#images').append(img);
+        
+            };  
+        };
+        
+        $(document).ready( function () {
+            $('#getImage').click( function () {
+                window.URL = window.URL || window.webkitURL;
+        
+            	var xhr = new XMLHttpRequest();
+
+                //todo : open 
+                //todo : responseType 
+                
+                
+                xhr.onload = callback;
+	            xhr.send();
+            });
+        });
+        
+
+    </script>
+}
+
+<button id="getImage">Get Image</button>
+<div id="images"></div>

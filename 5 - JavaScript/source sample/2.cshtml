@@ -1,0 +1,23 @@
+﻿@{
+    Page.Title = "xhr with JSON";
+}
+
+@section scripts {
+    <script>
+
+        var callback = function(e) {
+            
+            $('#results').text( XXXX );
+        }
+        
+        var xhr = new XMLHttpRequest();
+        
+        //todo : open
+        //todo : setRequestHeader
+
+        xhr.onload = callback;
+        xhr.send();
+    
+    </script>
+}
+<div id=results></div>

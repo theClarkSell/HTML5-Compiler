@@ -10,14 +10,17 @@ This contains all of the source and presentations used for the 2012 CodeMash HTM
 * git installed - http://github.com
 
 Browser of choice
+
 * Internet Explorer 9+
 * Chrome vN
 * Firefox vN
 
 Windows
+
 * WebMatrix v1 or greater or Visual Studio 2010 or greater
 
 Apple
+
 * Sublime ( tested ) or your favorite editor
 
 ## Sections
