@@ -8,3 +8,6 @@ _Resharper.*
 # VS solution files
 *.sou
 *.user
+
+#Mac Files
+.DS_Store
