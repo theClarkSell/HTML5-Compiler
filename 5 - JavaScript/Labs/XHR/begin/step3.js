@@ -1,6 +1,6 @@
-function lab1 ($, undefined) {
+function step3 ($, undefined) {
 	
-	$('#title').text('Lab #1 - Simple XHR GET');
+	$('#title').text('Lab #3 - Retreving Images Using XHR');
 	
 	// ----------------------------------------
 	// 	create our xhr object to be used later
@@ -15,6 +15,9 @@ function lab1 ($, undefined) {
         xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
+	// Take care of vendor prefixes URL
+	window.URL = window.URL || window.webkitURL;
+
 	// ----------------------------------------
 	// 	handle the XHR events
 	// ----------------------------------------
@@ -28,26 +31,14 @@ function lab1 ($, undefined) {
 	function onloaded(e){
 		
 		if (this.status == 200) {
-			// Get the string results of the call
-			var results = this.responseText;
-			
-			// Since we're going to get markup back we're just going to append that markup to our results div.
-			$('#results').append(results);
-		}
+            //TODO 
+        }; 
 	};
-		
+	
 	// ----------------------------------------
 	//	Setup our XHR object to be used.
 	// ----------------------------------------
-	
-	// Setup the action and URI we plan to interact with
-	xhr.open('GET', 'http://developerSmackdown.com', true);
-	
-	// set the xhr events
-	xhr.onload = onloaded;
-	xhr.onerror = onerror;
-	
-	// make the call
-	xhr.send();
 
+	//TODO 
+	
 };

@@ -1,6 +1,6 @@
-function lab3 ($, undefined) {
+function step1 ($, undefined) {
 	
-	$('#title').text('Lab #3 - Retreving Images Using XHR');
+	$('#title').text('Lab #1 - Simple XHR GET');
 	
 	// ----------------------------------------
 	// 	create our xhr object to be used later
@@ -15,9 +15,6 @@ function lab3 ($, undefined) {
         xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-	// Take care of vendor prefixes URL
-	window.URL = window.URL || window.webkitURL;
-
 	// ----------------------------------------
 	// 	handle the XHR events
 	// ----------------------------------------
@@ -31,29 +28,22 @@ function lab3 ($, undefined) {
 	function onloaded(e){
 		
 		if (this.status == 200) {
-            var blob = this.response;
-
-            var img = document.createElement('img');
-            img.onload = function(e) {
-                window.URL.revokeObjectURL(img.src);
-            };
-
-            img.src = window.URL.createObjectURL(blob);
-            $('#results').append(img);
-        }; 
+			// Get the string results of the call
+			var results = this.responseText;
+			
+			// Since we're going to get markup back we're just going to append that markup to our results div.
+			$('#results').append(results);
+		}
 	};
-	
+		
 	// ----------------------------------------
 	//	Setup our XHR object to be used.
 	// ----------------------------------------
-
-	// let's get an image from gravatar.
-	xhr.open('GET', 'http://0.gravatar.com/avatar/592fd4bb2692c7d9fbe8f5ef3af52309?size=420', true);
 	
-	// we want a blob returned to us
-	xhr.responseType = 'blob';
+	// Setup the action and URI we plan to interact with
+	xhr.open('GET', 'http://developerSmackdown.com', true);
 	
-	// setup the callbacks
+	// set the xhr events
 	xhr.onload = onloaded;
 	xhr.onerror = onerror;
 	

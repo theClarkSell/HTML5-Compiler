@@ -1,17 +1,17 @@
-function lab4 ($, undefined) {
+function step1 ($, undefined) {
 	
-	$('#title').text('Lab #4 - Post FormData with XHR');
+	$('#title').text('Lab #1 - Simple XHR GET');
 	
 	// ----------------------------------------
 	// 	create our xhr object to be used later
 	// ----------------------------------------
+
+	var xhr;	
 	
-	var xhr;
-	
-	if (window.XMLHttpRequest) {        
+    if (window.XMLHttpRequest) {        
         xhr = new XMLHttpRequest();
     } else if (window.ActiveXObject) {
-        // for older version of IE, we need to load activex xmlhttp object
+    	// for older version of IE, we need to load activex xmlhttp object
         xhr = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
@@ -19,23 +19,11 @@ function lab4 ($, undefined) {
 	// 	handle the XHR events
 	// ----------------------------------------
 	
-	// function to process any errors
-	function onerror(e){
-		$('#errors').text(e.message);
-	};
-	
-	// define the callback needed to process the result from the xhr call
-	function onloaded(e){
-		
-		if (this.status == 200) {
-			alert('posted!!!');
-		}
-	};
+	//TODO
 	
 	// ----------------------------------------
 	//	Setup our XHR object to be used.
 	// ----------------------------------------
-	
+
 	//TODO
-	
 };

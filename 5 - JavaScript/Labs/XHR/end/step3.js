@@ -1,4 +1,4 @@
-function lab3 ($, undefined) {
+function step3 ($, undefined) {
 	
 	$('#title').text('Lab #3 - Retreving Images Using XHR');
 	
@@ -31,7 +31,15 @@ function lab3 ($, undefined) {
 	function onloaded(e){
 		
 		if (this.status == 200) {
-            //TODO 
+            var blob = this.response;
+
+            var img = document.createElement('img');
+            img.onload = function(e) {
+                window.URL.revokeObjectURL(img.src);
+            };
+
+            img.src = window.URL.createObjectURL(blob);
+            $('#results').append(img);
         }; 
 	};
 	
@@ -39,6 +47,17 @@ function lab3 ($, undefined) {
 	//	Setup our XHR object to be used.
 	// ----------------------------------------
 
-	//TODO 
+	// let's get an image from gravatar.
+	xhr.open('GET', 'http://0.gravatar.com/avatar/592fd4bb2692c7d9fbe8f5ef3af52309?size=420', true);
 	
+	// we want a blob returned to us
+	xhr.responseType = 'blob';
+	
+	// setup the callbacks
+	xhr.onload = onloaded;
+	xhr.onerror = onerror;
+	
+	// make the call
+	xhr.send();
+
 };

@@ -1,4 +1,4 @@
-function lab4 ($, undefined) {
+function step4 ($, undefined) {
 	
 	$('#title').text('Lab #4 - Post FormData with XHR');
 	
