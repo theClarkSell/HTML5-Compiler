@@ -1,5 +1,4 @@
-# Lab 4 - JavaScript
-
+# Module 3 - CSS3
 ## Prerequisites
 
 ## Steps
