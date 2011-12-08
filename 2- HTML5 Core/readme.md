@@ -1,4 +1,4 @@
-# Lab 1 - HTML5 Core
+ Lab 1 - HTML5 Core
 ## Module 1 - Semantic Markup
 
 ### I. From XHTML to HTML5
@@ -17,7 +17,7 @@
 ### II. Semantic HTML5
 1. In the  "2- HTML5 Core/labs/markup/begin" folder, open the blog.html page. Take note of the structure and liberal use of `<div>` elements.
 
-2. In the css folder, open "style.css." Notice that the page is beying styled using the IDs and classes names of `<div>` elements on our page.
+2. In the css folder, open "style.css." Notice that the page is being styled using the IDs and classes names of `<div>` elements on our page.
 
 3. Change the `<div id="header">` element to `<header>`. 
 
@@ -54,18 +54,16 @@
 13. Open the page in your browser again, and notice that everything looks exactly as it did before. 
 **Questions to ponder:** Why are these new tags considered "better" than simply using divs with IDs or classes? Why are they referred to as "semantic" elements?   
 
-14. Surround every occruence of the text "HTML5" with the `<mark>` tag and run the page in the browser. Notice how the browser styles the test automatically. 
+14. Surround every occurrence of the text "HTML5" with the `<mark>` tag and run the page in the browser. Notice how the browser styles the test automatically. 
 **Questions to ponder:** What possible use cases for the `<mark>` tag can you think of? 
 
 ### **[EXTRA CREDIT]** Use a Polyfill for an older browser (In this example, we'll use IE9 to simulate IE8 behavior)
 1. Open the page with Internet Explorer 9 (if you haven't already), and hit the F12 key (or use the menu) to open the developer tools.
 
-2. Click on the "Browser Mode" menu item to the right of the menu bar. You shuold see options similar to the image below. Select "Internet Explorer 8," or "Internet Explorer 7" and watch how the page changes.
-
+2. Click on the "Browser Mode" menu item to the right of the menu bar. You should see options similar to the image below. Select "Internet Explorer 8," or "Internet Explorer 7" and watch how the page changes.
 ![Changing the Browser Mode in IE9's F12 Developer Tools](https://github.com/csell5/HTML5-Compiler/raw/master/2-%20HTML5%20Core/labs/assets/ie9BrowserMode.png "IE9 Browser Tools")
 
 2. In the `<head>` of your page, add the following `<script>` tag to reference Modernizr:
-
 `<script src="../../../../lib/js/modernizr-2.0.6.js" type="text/javascript" charset="utf-8"></script>`
 
 3. Refresh the page, and notice that, even though you're still viewing the page as an IE8 user would, things are styled correctly. **Question to ponder:** what does Modernizr do to make this work? (Hint: Check out Modernizr.com)
@@ -74,17 +72,21 @@
 ## Module 2 - Audio and Video
 
 ### I. Audio
-1. Open the audio.html page
+1. Open the "2 - HTML5 Core/labs/video_and_audio/begin/audio.html" page.
 
-2. Add an audio tag to point to one of the music files in the  music/ folder
+2. Add an audio tag to point to one of the music files in the  "media/" folder
+`<audio id="audio" src="../media/Nirvana-In Bloom.mp3" controls autoplay></audio>`
 
-3. Open the file in your browser
+3. Now open the page in the browser. If you are using Safari, Chrome or IE9, the song should play automatically, and you should see an audio player on the page. If you are using, FireFox or Opera, the song won't play because the MP3 file type isn't supported. Change the extension in #2 to ".wav" and reload the page.
 
-4. Now open it in a browser that doesn't support the audio format you chose.
+4. Because a single audio file format is not supported across all browsers, we'll need to provide multple types on our page, and we can do so with the `<source>` element. Remove the "src" property from your `<audio>` tag and add the following elements between the open and close `<audio>` tags
+````
+<source src="../media/Nirvana-In Bloom.mp3" />
+<source src="../media/Nirvana-In Bloom.wav" />
+````
 
-5. Add a supported format to the markup
+5. Now lets add some JavaScript to manipulate the volume of the playing song.
 
-6. Add some JavaScript to Pause/Play audio no matter where you click on the player.
 
 ### **[EXTRA CREDIT] Audio and the FileAPI**
 1. If you have some time, add some code that will read the ID3 tags and display the artist information underneath the player.  

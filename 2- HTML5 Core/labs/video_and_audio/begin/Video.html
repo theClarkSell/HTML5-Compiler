@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Video Demo</title>    
+    </head>
+    <body>
+        <video id='movie'  
+            poster="images/big-buck-bunny_poster.jpg"
+            autoplay 
+            controls
+            loop 
+            preload=auto
+            playbackRate="1"
+            width="800">
+                <source src="video/video.mp4" type='video/mp4' /> 
+                <source src="video/video.webm" type='video/webm' />
+                <object data="data:application/x-silverlight-2," height="288" type="application/x-silverlight-2"
+                    width="512">
+                    <param name="minRuntimeVersion" value="4.0.50401.0" />
+                    <param name="source" value="http://channel9.msdn.com/scripts/Channel9.xap?v=1.5" />
+                    <param name="initParams" value="mediaurl=http://media.ch9.ms/ch9/06c8/8113d5d7-acc7-4890-affc-9ebe016c06c8/Part8MvcScaffolding_2MB_ch9.wmv,thumbnail=http://media.ch9.ms/ch9/06c8/8113d5d7-acc7-4890-affc-9ebe016c06c8/Part8MvcScaffolding_512_ch9.jpg,deliverymethod=progressivedownload,autoplay=false,entryid=8113d5d7acc74890affc9ebe016c06c8" />
+                </object>
+        </video>
+    </body>
+    <script>
+        var rate = 1;
+        var v = document.getElementById('movie');
+
+        v.onclick = function () {
+            if (v.paused) {
+                v.play();
+                v.playbackRate = rate++;
+            } else {
+                v.pause();
+            }
+        };
+    </script>
+</html>
