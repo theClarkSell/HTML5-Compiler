@@ -1,4 +1,4 @@
-# Lab 4 - JavaScript
+# Lab 5 - JavaScript
 Contributors: Brandon Satrom, Clark Sell
 
 Tags: HTML5, JavaScript, DOMQuerySelectors, XHR, XMLHttpRequest
