@@ -1,9 +1,24 @@
 # 2012 CodeMash HTML5 Precompiler
 Contributors: Brandon Satrom, Clark Sell
 
-Tags: HTML5, JavaScript, CSS3
+Tags: HTML5, JavaScript, XHR, XMLHttpRequest
 
 - - -
+## Abstract
+
+In this lab we're going to work through building and using the new XMLHttpRequest JavaScript api's. There are four steps in this lab each building upon concepts from the previous step.
+
+- - -
+## What will you learn?
+
+In this lab you will learn the basics for using XMLHttpRequest Level2 or XHR L2.
+
+* How to create and use XHR objects?
+* How to open and send a request?
+* How to handle the XHR events?
+* How to post data using the XHR object?
+
+- - - 
 ## Prerequisites
 
 * Network Access, as we will be interacting with services in the cloud.
@@ -14,55 +29,8 @@ Tags: HTML5, JavaScript, CSS3
 To find out if a site or service is CORS enabled the server should return you a response header like the following.
 	
 >		Access-Control-Allow-Origin: *
-	
-### On Windows, 
-
-* Visual Studio 2010 or WebMatrix with IISExpress
-* IISExpress
-* Powershell 
-
-### On Apple
-	
-* ??
 
 - - - 
-## What will you learn?
-
-In this lab you will learn the basics for using XMLHttpRequest Level2 or XHR L2.
-
-* How to create and use XHR objects?
-* How to open and send a request?
-* How to handle the XHR events?
-* How to post data using the XHR object?
-
-- - -
-## Running this lab
-
-In this lab you will writing JavaScript XHR commands interfacing with different services.
-
-### Windows
-
-You will need to start the webserver 
-
-* Open the PowerShell Console
-* Change Directory to where you have cloned the source + **5 - JavaScript\Labs\XHR\end**
-* Run **startIISExpress.ps1**. This will start your webserver from that directory.
-
-### Apple
-
-* adsf
-
-### Running
-
-Once you have the webserver running you can browse to: http://localhost:8080/default.htm to execute each step in this lab.
-
-> *default.htm* is the executing page for each step in this lab.
-
-This documenation can also be found locally at: http://localhost:8080/readme.htm
-
-- - -
-## The Labs
-
 ### Step #1
 
 In this step we're going to learn how to create a basic XHR object and use it.
