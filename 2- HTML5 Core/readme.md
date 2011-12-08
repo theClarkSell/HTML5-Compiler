@@ -64,9 +64,11 @@
 
 ![Changing the Browser Mode in IE9's F12 Developer Tools](https://github.com/csell5/HTML5-Compiler/raw/master/2-%20HTML5%20Core/labs/assets/ie9BrowserMode.png "IE9 Browser Tools")
 
-2. Change the document mode to IE8 and refresh the page
+2. In the `<head>` of your page, add the following `<script>` tag to reference Modernizr:
 
-3. Now add a reference to Modernizr and refesh the page
+`<script src="../../../../lib/js/modernizr-2.0.6.js" type="text/javascript" charset="utf-8"></script>`
+
+3. Refresh the page, and notice that, even though you're still viewing the page as an IE8 user would, things are styled correctly. **Question to ponder:** what does Modernizr do to make this work? (Hint: Check out Modernizr.com)
 
 ---
 ## Module 2 - Audio and Video
@@ -154,4 +156,5 @@
 1. [The HTML5 Doctype](http://www.w3.org/TR/html5/syntax.html#the-doctype)
 2. [New HTML5 Elements](http://www.w3.org/TR/html5/elements.html#elements)
 3. [The <hgroup> Element](http://www.w3.org/TR/html5/sections.html#the-hgroup-element)
-4. [The <time> Element](http://time)
+4. [The <time> Element](http://www.w3.org/TR/html5/text-level-semantics.html#the-time-element)
+5. [Modernizr](http://modernizr.com)
