@@ -62,7 +62,7 @@
 
 2. Click on the "Browser Mode" menu item to the right of the menu bar. You shuold see options similar to the image below. Select "Internet Explorer 8," or "Internet Explorer 7" and watch how the page changes.
 
-![Changing the Browser Mode in IE9's F12 Developer Tools]("IE9 Browser Tools")
+![Changing the Browser Mode in IE9's F12 Developer Tools](https://github.com/csell5/HTML5-Compiler/raw/master/2-%20HTML5%20Core/labs/assets/ie9BrowserMode.png "IE9 Browser Tools")
 
 2. Change the document mode to IE8 and refresh the page
 
