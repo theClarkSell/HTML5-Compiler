@@ -58,7 +58,11 @@
 **Questions to ponder:** What possible use cases for the `<mark>` tag can you think of? 
 
 ### **[EXTRA CREDIT]** Use a Polyfill for an older browser (In this example, we'll use IE9 to simulate IE8 behavior)
-1. Open the page with IE, and hit F12 to open the developer tools
+1. Open the page with Internet Explorer 9 (if you haven't already), and hit the F12 key (or use the menu) to open the developer tools.
+
+2. Click on the "Browser Mode" menu item to the right of the menu bar. You shuold see options similar to the image below. Select "Internet Explorer 8," or "Internet Explorer 7" and watch how the page changes.
+
+![Changing the Browser Mode in IE9's F12 Developer Tools]("IE9 Browser Tools")
 
 2. Change the document mode to IE8 and refresh the page
 
@@ -146,8 +150,8 @@
 
 5. Note that the email and url fields have built-in patterns
 
-# Reources
+# Resources
 1. [The HTML5 Doctype](http://www.w3.org/TR/html5/syntax.html#the-doctype)
 2. [New HTML5 Elements](http://www.w3.org/TR/html5/elements.html#elements)
 3. [The <hgroup> Element](http://www.w3.org/TR/html5/sections.html#the-hgroup-element)
-4. [time]: http://time "The <time> Element"
+4. [The <time> Element](http://time)

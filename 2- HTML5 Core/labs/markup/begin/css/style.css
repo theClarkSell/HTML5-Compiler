@@ -2,6 +2,7 @@
 body { 
 	font-size: 16px; 
 	font-family: arial,helvetica,clean,sans-serif;  
+	padding: 10px;
 }
 a { 
 	color: #33CC33; 
@@ -58,7 +59,7 @@ a:hover {
 {
 	background: #99FF66;
 	margin-bottom: 10px;
-	padding: 5px;
+	padding: 20px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
