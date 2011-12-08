@@ -1,0 +1,22 @@
+﻿
+#myFigure  {
+	padding: 10px;
+	margin: 10px;
+	font: 1.2em;
+	text-align: center;
+	width: 500px;
+	border: medium double #008000;
+	border-radius: 6px;
+	background-color: #C0C0C0;
+	font-weight: bold;
+}
+
+.roundedCornersAreCool {
+	width: 600px;
+	border: solid black;
+	margin: 20px;
+	padding: 10px;
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px; 
+	border-radius: 10px;
+}
