@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Video Demo</title>    
+    </head>
+    <body>
+        <video poster="../media/big-buck-bunny_poster.jpg"
+            controls loop preload=auto playbackRate="1" width="800">
+                <source src="../media/video.mp4" type="video/mp4" /> 
+                <source src="../media/video.webm" type="video/webm" />
+				<source src="../media/video.ogg" type="video/ogg">	
+                <object type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="640" height="360">
+					<param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
+					<param name="allowFullScreen" value="true" />
+					<param name="wmode" value="transparent" />
+					<param name="flashVars" value="config={'playlist':['http%3A%2F%2Fsandbox.thewikies.com%2Fvfe-generator%2Fimages%2Fbig-buck-bunny_poster.jpg',{'url':'http%3A%2F%2Fclips.vorwaerts-gmbh.de%2Fbig_buck_bunny.mp4','autoPlay':false}]}" />
+					<img alt="Big Buck Bunny" src="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360" title="No video playback capabilities, please download the video below" />
+				</object>
+        </video>
+		<script>
+	        var rate = 1;
+	        var v = document.querySelector('video');
+
+			v.addEventListener('click', function() {
+				if (v.paused) {
+	                v.play();
+	                v.playbackRate = rate++;
+	            } else {
+	                v.pause();
+	            }
+			});
+	    </script>	
+    </body>    
+</html>
