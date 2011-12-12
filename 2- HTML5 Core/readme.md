@@ -63,10 +63,10 @@
 2. Click on the "Browser Mode" menu item to the right of the menu bar. You should see options similar to the image below. Select "Internet Explorer 8," or "Internet Explorer 7" and watch how the page changes.
 ![Changing the Browser Mode in IE9's F12 Developer Tools](https://github.com/csell5/HTML5-Compiler/raw/master/2-%20HTML5%20Core/labs/assets/ie9BrowserMode.png "IE9 Browser Tools")
 
-2. In the `<head>` of your page, add the following `<script>` tag to reference Modernizr:
+3. In the `<head>` of your page, add the following `<script>` tag to reference Modernizr:
 `<script src="../../../../lib/js/modernizr-2.0.6.js" type="text/javascript" charset="utf-8"></script>`
 
-3. Refresh the page, and notice that, even though you're still viewing the page as an IE8 user would, things are styled correctly. **Question to ponder:** what does Modernizr do to make this work? (Hint: Check out Modernizr.com)
+4. Refresh the page, and notice that, even though you're still viewing the page as an IE8 user would, things are styled correctly. **Question to ponder:** what does Modernizr do to make this work? (Hint: Check out Modernizr.com)
 
 ---
 ## Module 2 - Audio and Video
@@ -74,8 +74,10 @@
 ### I. Audio
 1. Open the "2 - HTML5 Core/labs/video_and_audio/begin/audio.html" page.
 
-2. Add an audio tag to point to one of the music files in the  "media/" folder
-`<audio id="audio" src="../media/Nirvana-In Bloom.mp3" controls autoplay></audio>`
+2. Add an audio tag to point to one of the music files in the  "media/" folder.
+````
+<audio id="audio" src="../media/Nirvana-In Bloom.mp3" controls autoplay></audio>
+````
 
 3. Now open the page in the browser. If you are using Safari, Chrome or IE9, the song should play automatically, and you should see an audio player on the page. If you are using, FireFox or Opera, the song won't play because the MP3 file type isn't supported. Change the extension in #2 to ".wav" and reload the page.
 
@@ -85,31 +87,106 @@
 <source src="../media/Nirvana-In Bloom.wav" />
 ````
 
-5. Now lets add some JavaScript to manipulate the volume of the playing song.
+5. Now lets add some JavaScript to manipulate the volume of the playing song. First, add a `<script>` tag to audio.html. Note that the HTML5 spec no long requires the `type` attribute.
 
+6. Now insert the following code to manipulate the volume, and display the result. 
+		````
+		(function($) {
+		var audio = document.querySelector('audio');
+		var vol = document.querySelector('#vol');
 
-### **[EXTRA CREDIT] Audio and the FileAPI**
-1. If you have some time, add some code that will read the ID3 tags and display the artist information underneath the player.  
+		vol.innerText = Math.round(audio.volume*10);
+				
+		$('#turnUp').click(function () {
+			var aVol = audio.volume;
+
+         if (audio.muted) {
+	   		audio.muted = false;
+				vol.innerText = 1;
+				return;
+	 		}
+
+         if (aVol+.1 < 10) {
+	   		audio.volume = aVol + .1;
+				vol.innerText = Math.round(audio.volume*10);
+			}
+		});
+
+		$('#turnDown').click(function () {
+			var aVol = audio.volume;
+
+	   	if (aVol - .1 > 0) {
+	   		audio.volume = aVol - .1;            
+				vol.innerText = Math.round(audio.volume*10);
+			} else {
+	   		audio.muted = true;
+				vol.innerText = 0
+	  		}
+		})
+		})(jQuery);
+   	````
+
+7. Now run the page and click the buttons to turn the volume up and down.
 
 ### II. Video
-1. Open the video.html file
+1. Open the "2 - HTML5 Core/labs/video_and_audio/begin/video.html" page.
 
-2. Add an video tag to point to the video file
+2. Add the following `<video>` tag inside the body of the page:
+````
+<video src="../media/video.webm" poster="../media/big-buck-bunny_poster.jpg"
+		controls loop preload=auto playbackRate="1" width="800">
+</video>
+````
+**Note**: WebM is supported by Chrome and IE9 (with a plugin). Use .mp4 with IE9+ and Safari, and .ogg for Firefox of Opera.
 
-3. Open the file in a browser that supports the format you chose.
+3. Open the file in a browser that supports the format you chose. Click the play button and take note of the controls offered by your browser of choice (they're not the same for all browsers).
 
-4. Now open it in a browser that doesn't support that format.
+4. Now open the page in another browser that doesn't support your chosen format. Notice that the video doesn't play.
 
-5. Add some additional `<src>` tags for formatting
+5. To support multiple browsers, we're going to need to add some additional `<src>` tags for formatting. Remove the `src` attribute from the video element and add the following between the open and closing `<video>` tags:
+````
+<source src="../media/video.mp4" type="video/mp4" /> 
+<source src="../media/video.webm" type="video/webm" />
+<source src="../media/video.ogg" type="video/ogg">
+````
 
-### **[EXTRA CREDIT]** Test with an older browser (examples assume IE9 for IE8 targeting)
-1. Open the page in IE9 and open the dev tools (F12)
+6. Now let's add some simple JavaScript to manipulate the video. Specifically, let's add a `<script>` block with the following code to play and pause the video when the user clicks anywhere on the Video surface (as opposed to only when they click the button):
+	````
+   	var rate = 1;
+		var v = document.querySelector('video');
 
-2. Change the browser to IE8 and notice that video no longer works.
+		v.addEventListener('click', function() {
+			if (v.paused) {
+   	   	v.play();
+         	v.playbackRate = rate++;
+      	} else {
+        		v.pause();
+      	}
+		});
+	````
 
-3. Change the markup to fallback to Silverlight
+### **[EXTRA CREDIT]** Add support for non-HTML5 Browsers (examples assume using IE9 for IE8 targeting)
+1. Open the page with Internet Explorer 9 (if you haven't already), and hit the F12 key (or use the menu) to open the developer tools.
 
-4. Add some JavaScript to speed up or slow down the video when a button is clicked.
+2. Click on the "Browser Mode" menu item to the right of the menu bar. You should see options similar to the image below. Select "Internet Explorer 8," or "Internet Explorer 7" and notice that the video will no longer work.
+![Changing the Browser Mode in IE9's F12 Developer Tools](https://github.com/csell5/HTML5-Compiler/raw/master/2-%20HTML5%20Core/labs/assets/ie9BrowserMode.png "IE9 Browser Tools")
+
+3. In the last example, we used Modernizr to detect support for an HTML5 feature. We can use Modernizr for video, but its also possible to use a built-in compatability feature of the `<video>` and `<audio>` tags to handle those cases where the Media in the borwser is not supported.
+
+4. If Media isn't supported by the user's browser, the video or audio elements will not be rendered, and the browser will instead render anything inside the `<video>` and `</video>` tags, be it text or another HTML element. We can use this feature to add a Flash or Silverlight `<object>` tag that will render the video using those technologies as a fallback. If the browser does support `<video>,` the Flash or Silverlight video will never load
+
+5. Add the following `<object>` tag to the `<video>` element, after the `<src>` elements:
+````
+<object type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="640" height="360">
+	<param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
+	<param name="allowFullScreen" value="true" />
+	<param name="wmode" value="transparent" />
+	<param name="flashVars" value="config={'playlist':['http%3A%2F%2Fsandbox.thewikies.com%2Fvfe-generator%2Fimages%2Fbig-buck-bunny_poster.jpg',{'url':'http%3A%2F%2Fclips.vorwaerts-gmbh.de%2Fbig_buck_bunny.mp4','autoPlay':false}]}" />
+	<img alt="Big Buck Bunny" src="http://sandbox.thewikies.com/vfe-generator/images/big-buck-bunny_poster.jpg" width="640" height="360" title="No video playback capabilities, please download the video below" />
+</object>
+````
+
+6. Now refresh the page in IE8. Right-click on the view, and notice that the Flash context menu shows up. Congrats, you now have a robust HTML5 Video solution that supports all browsers!
 
 ---
 ## Module 3 - HTML5 Forms
@@ -157,6 +234,6 @@
 # Resources
 1. [The HTML5 Doctype](http://www.w3.org/TR/html5/syntax.html#the-doctype)
 2. [New HTML5 Elements](http://www.w3.org/TR/html5/elements.html#elements)
-3. [The <hgroup> Element](http://www.w3.org/TR/html5/sections.html#the-hgroup-element)
-4. [The <time> Element](http://www.w3.org/TR/html5/text-level-semantics.html#the-time-element)
+3. [The `<hgroup>` Element](http://www.w3.org/TR/html5/sections.html#the-hgroup-element)
+4. [The `<time>` Element](http://www.w3.org/TR/html5/text-level-semantics.html#the-time-element)
 5. [Modernizr](http://modernizr.com)
