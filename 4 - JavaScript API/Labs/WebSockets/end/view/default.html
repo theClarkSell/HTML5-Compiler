@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>CodeMash HTML5 PreCompiler WebSockets Lab</title>
+        <meta name="author" content="Clark Sell, Brandon Satrom" />
+        
+        <script type="text/javascript" src="http://localhost:8080/scripts/socket.io.js "></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.js"></script>
+
+    </head>
+    <body>
+        <section>
+            <p>
+        		<label for="messageText">Message Text</label>
+                <input type="text" id="sendMessage"/>
+            </p>
+            <p>	
+	        	<button id="echo">Echo</button>
+	            <button id="submit">Submit</button>
+            </p>
+        </section>
+        
+        <section>
+        	<ul id="systemMessages"></ul>
+        </section>
+        
+    	<section>
+    		<hr/>	
+            <ul id="recievedMessages"></ul>
+        </section>
+        
+        <script type="text/javascript">
+            $(document).ready(function() {
+                
+            	var webSocket = new io.connect('http://localhost:8080');
+                
+                webSocket.on('connect', function() {
+                    $('#systemMessages').append('<li>Connected to the server.</li>');
+                });
+
+				webSocket.on('disconnect', function() {
+                    $('#systemMessages').append('<li>Disconnected from the server.</li>');
+                });
+                
+                webSocket.on('message', function(message) {
+                    $('#recievedMessages').append('<li>' + message + '</li>');
+                });
+                
+				$('#echo').bind('click', function() {
+				
+					var message = $('#sendMessage').val();
+					webSocket.emit('echo', message);
+				
+					$('#sendMessage').val('');
+				});
+				 
+				$('#submit').bind('click', function() {
+				
+					var message = $('#sendMessage').val();
+					webSocket.emit('message', message);
+				
+					$('#sendMessage').val('');
+				});
+
+            });
+        </script>
+    </body>
+</html>
