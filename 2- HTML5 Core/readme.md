@@ -1,4 +1,4 @@
- Lab 1 - HTML5 Core
+# Lab 1 - HTML5 Core
 ## Module 1 - Semantic Markup
 
 ### I. From XHTML to HTML5
@@ -278,4 +278,4 @@
 6. [The Modernizr Guide to Polyfills](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills)
 7. [Video for Everybody](http://sandbox.thewikies.com/vfe-generator/)
 8. [HTML5 Forms](http://www.w3.org/TR/html5/forms.html)
-8. [MSDN Magazine :: Better Web Forms with HTML5 Forms](http://msdn.microsoft.com/en-us/magazine/hh547102.aspx)
+9. [MSDN Magazine :: Better Web Forms with HTML5 Forms](http://msdn.microsoft.com/en-us/magazine/hh547102.aspx)
