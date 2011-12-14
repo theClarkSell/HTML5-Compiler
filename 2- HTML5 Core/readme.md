@@ -174,6 +174,7 @@
 4. If Media isn't supported by the user's browser, the video or audio elements will not be rendered, and the browser will instead render anything inside the `<video>` and `</video>` tags, be it text or another HTML element. We can use this feature to add a Flash or Silverlight `<object>` tag that will render the video using those technologies as a fallback. If the browser does support `<video>,` the Flash or Silverlight video will never load
 
 5. Add the following `<object>` tag to the `<video>` element, after the `<src>` elements:
+	
 	`<object type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="640" height="360">
 		<param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
 		<param name="allowFullScreen" value="true" />
@@ -243,11 +244,11 @@
 
 		Modernizr.load({
     		test: Modernizr.input.placeholder,
-     	 nope: "../js/html5placeholder.jquery.min.js",
-     	 callback: function() {
-   			$('input[placeholder]').placeholder();
-   		}
-   	});
+     	 	nope: "../js/html5placeholder.jquery.min.js",
+     	 	callback: function() {
+   				$('input[placeholder]').placeholder();
+   			}
+   		});
 
 Modernizr.load uses the yepnope.js library to conditionally load resources based on the result of some boolean test. In this case, the test is `Modernizr.input.placeholder,` which will return false ('nope') if the browser does't support placeholder text. When the test is false, Modernizr will load the script specified in the `nope` property and once that script has loaded, will execute a callback we provide. Our callback then selects all input elements using `placeholder` and calls the `placeholder()` method provided by our plugin. Triple bonus points if you can figure out how the plugin works it's magic.
 
