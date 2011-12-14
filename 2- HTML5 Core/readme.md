@@ -82,7 +82,7 @@
 
 3. Now open the page in the browser. If you are using Safari, Chrome or IE9, the song should play automatically, and you should see an audio player on the page. If you are using, FireFox or Opera, the song won't play because the MP3 file type isn't supported. Change the extension in #2 to ".wav" and reload the page.
 
-4. Because a single audio file format is not supported across all browsers, we'll need to provide multple types on our page, and we can do so with the `<source>` element. Remove the "src" property from your `<audio>` tag and add the following elements between the open and close `<audio>` tags
+4. Because a single audio file format is not supported across all browsers, we'll need to provide multiple types on our page, and we can do so with the `<source>` element. Remove the "src" property from your `<audio>` tag and add the following elements between the open and close `<audio>` tags
 	
 	`<source src="../media/Nirvana-In Bloom.mp3" />
 	<source src="../media/Nirvana-In Bloom.wav" />`
@@ -169,7 +169,7 @@
 
 	![Changing the Browser Mode in IE9's F12 Developer Tools](https://github.com/csell5/HTML5-Compiler/raw/master/2-%20HTML5%20Core/labs/assets/ie9BrowserMode.png "IE9 Browser Tools")
 
-3. In the last example, we used Modernizr to detect support for an HTML5 feature. We can use Modernizr for video, but its also possible to use a built-in compatability feature of the `<video>` and `<audio>` tags to handle those cases where the Media in the borwser is not supported.
+3. In the last example, we used Modernizr to detect support for an HTML5 feature. We can use Modernizr for video, but its also possible to use a built-in compatibility feature of the `<video>` and `<audio>` tags to handle those cases where the Media in the browser is not supported.
 
 4. If Media isn't supported by the user's browser, the video or audio elements will not be rendered, and the browser will instead render anything inside the `<video>` and `</video>` tags, be it text or another HTML element. We can use this feature to add a Flash or Silverlight `<object>` tag that will render the video using those technologies as a fallback. If the browser does support `<video>,` the Flash or Silverlight video will never load
 
@@ -201,7 +201,7 @@
 
 3. Refresh the page in the browser and enter an invalid Email address or Url and click the "Place Order" button to view the built-in validation for these fields. Simply specifying a type of URL or Email will provide some basic validation in the browser. Now open the page in another browser (Opera, IE 10, Chrome, Firefox, Safari) and take note of how validation differs for these fields in another browser.
 
-4. The `num` type has some additonal attributes that we can use on our form, so add the following to the `ordeQty` field:
+4. The `number` type has some additional attributes that we can use on our form, so add the following to the `ordeQty` field:
 
 	`min=1 max=10 step=1` 
 
@@ -209,7 +209,7 @@
 
 4. Now take note of the deliveryDate field in your browser of choice. Try viewing the page in Chrome, IE, Firefox and Opera and take note of the differences in the Date field from one browser to the next.
 
-### **[EXTRA CREDIT]** Add a jquery UI Date Picker using Modernizr
+### **[EXTRA CREDIT]** Add a jQuery UI Date Picker using Modernizr
 1. Note that we already have references to jQuery, Modernizr and jQuery UI in the head of the order.html page. We'll start by using Modernizr to check for date support, so add the following to the empty `<script>` element on the page:
 
 		(function() {
@@ -218,7 +218,7 @@
 			}
 		})();
 
-2. In this case, we're using Modernizr to check the `inputtypes` `date` property, which will return true if the date type is suported, and false if it isn't. If the date type isn't supported, we can use jQuery UI to provide a datepicker for us. Add the following line in place of the `//Add jQuery UI DatePicker here` comment:
+2. In this case, we're using Modernizr to check the `inputtypes` `date` property, which will return true if the date type is supported, and false if it isn't. If the date type isn't supported, we can use jQuery UI to provide a datepicker for us. Add the following line in place of the `//Add jQuery UI DatePicker here` comment:
 
 	`$('input[type=Date]').datepicker();`
 
@@ -250,7 +250,7 @@
    			}
    		});
 
-Modernizr.load uses the yepnope.js library to conditionally load resources based on the result of some boolean test. In this case, the test is `Modernizr.input.placeholder,` which will return false ('nope') if the browser does't support placeholder text. When the test is false, Modernizr will load the script specified in the `nope` property and once that script has loaded, will execute a callback we provide. Our callback then selects all input elements using `placeholder` and calls the `placeholder()` method provided by our plugin. Triple bonus points if you can figure out how the plugin works it's magic.
+3. Modernizr.load uses the yepnope.js library to conditionally load resources based on the result of some Boolean test. In this case, the test is `Modernizr.input.placeholder,` which will return false ('nope') if the browser doesn't support placeholder text. When the test is false, Modernizr will load the script specified in the `nope` property and once that script has loaded, will execute a callback we provide. Our callback then selects all input elements using `placeholder` and calls the `placeholder()` method provided by our plugin. Triple bonus points if you can figure out how the plugin works it's magic.
 
 4. Refresh the page to verify that the polyfill is working. In the Developer Tools of your browser, turn on Network capturing and verify that we are in fact loading the plugin only in those cases where placeholder text is not supported.
 
@@ -259,7 +259,7 @@ Modernizr.load uses the yepnope.js library to conditionally load resources based
 
 2. Refresh the page and click 'Place Order' without filling out any data. Take note of the built-in validation provided by the browser.
 
-3. We can take validation even further by specifying the `pattern` attribute, which takes a RegEx that the browser uses to validate user entry. You've already seen this at work with the Email and Url fields, where the browser uses a built-in pattern (which you can override, btw). Let's apply this pattern to the `orderTelephone` field by atting the following:
+3. We can take validation even further by specifying the `pattern` attribute, which takes a RegEx that the browser uses to validate user entry. You've already seen this at work with the Email and Url fields, where the browser uses a built-in pattern (which you can override, btw). Let's apply this pattern to the `orderTelephone` field by adding the following:
 
 	`pattern="\(\d\d\d\) \d\d\d\-\d\d\d\d"`
 
