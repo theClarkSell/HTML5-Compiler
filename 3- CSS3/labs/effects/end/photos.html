@@ -78,7 +78,15 @@
         </div>
 		<script>
 			(function() {
-				
+				Modernizr.load({
+					test: Modernizr.borderradius,
+					nope: '../js/PIE.js',
+					callback: function() {
+						$('img').each(function() {
+							PIE.attach(this);
+						})
+					}
+				});
 			})();
 		</script>
     </body>
