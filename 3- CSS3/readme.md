@@ -85,11 +85,28 @@
 ---
 ## Module 2 - Web Fonts
 
-1. Open the "3- CSS3\labs\font-face\begin\photos.html" file.
+1. Open the "3- CSS3\labs\font-face\begin\photos.html" file. This file will be similar to the result of Module 1.
 
-2. Open "css/style.css" and create a @font-face declaration on the page:
+2. Open "css/style.css" and create a @font-face declaration at the top of the page:
 
-3. Modify the body style declaration to use this new font family. 
+	`@font-face {
+    	font-family: 'SpicyRiceRegular';
+    	src: url('../../fonts/spicyrice-regular-webfont.eot');
+    	src: url('../../fonts/spicyrice-regular-webfont.eot?#iefix') format('embedded-opentype'),
+     	     url('../../fonts/spicyrice-regular-webfont.woff') format('woff'),
+  	         url('../../fonts/spicyrice-regular-webfont.ttf') format('truetype'),
+ 	         url('../../fonts/spicyrice-regular-webfont.svg#SpicyRiceRegular') format('svg');
+    	font-weight: normal;
+    	font-style: normal;
+}`
+
+3. Modify the body style declaration to use this new font family. In the `body` selector, change the `font-family` style to the following:
+
+	`font-family: "SpicyRiceRegular", Tahoma, Verdana, Arial, Sans-Serif;`
+
+4. Then, change the `font-family` style for the `#banner` selector to the following:
+
+	`font-family: "SpicyRiceRegular";`
 
 4. Before refreshing your browser, turn on Network monitoring in the "Network" tab of your browser's developer tools.
 
