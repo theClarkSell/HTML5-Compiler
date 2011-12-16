@@ -1,4 +1,4 @@
-# Lab 2 - JavaScript APIs
+# Lab 3 - JavaScript APIs
 
 ---
 ## Module 1 - Geolocation
@@ -6,27 +6,108 @@
 ### I. Geolocation and Mapping
 [Note: This demo uses the Microsoft Bing maps control, but you are welcome to use the Google Maps control if you prefer. The relevant JavaScript for Geolocation should be identical for both.]
 
-1. Go to [sdfds]() to obtain a key for the BingMaps control
+1. Go to [The Bing Maps Portal](https://www.bingmapsportal.com) to obtain a key for the BingMaps control. See [this article](http://msdn.microsoft.com/en-us/library/ff428642.aspx) for more information.
 
-2. Open map.html and enter your key
+2. Open "4- JavaScript API/labs/geolocation/begin/map.html" and run the page. You should see nothing but an empty box with a border at this point. Inspect both the map.html file and css/style.css to inspect the existing styles and elements on the page.
 
-3. Now, add a geolocation call
+3. Open js/geolocation.js and enter the following, replacing the text "your_key_here" with the key you obtained in step 1:
 
-4. The API call returns a coords object with the users lat, long and other infromation. Let's display this information to the user, and also place their current location on a map. 
+		`var _creds = "your_key_here";
+		var mapDiv = document.getElementById("map");
+		var _map = new Microsoft.Maps.Map(mapDiv, { credentials: _creds });`
 
-5. Refresh the page and click "Accept" to give your browser permission to use your location.
+4. Now, create a locate function:
 
-6. One of the great features of Geolocation is that the browser will typically adapt its mechanism for determining your position based on the most-reliable information. On mobile devices, this means that the browser takes GPS location data into account. If you have a mobile device emulator (iPhone via XCode or the Windows Phone Emulator in Visual Studio), open this page in the built-in browser. Try modifying the GPS-reported location in the emulator (supported with both iOS and WP7 emulators) and refresh the page to see the mapped location change.
+		`function locate() {
+    		navigator.geolocation.getCurrentPosition(function (position) {
+      		var coordinates = position.coords;
+        		
+				setDetails(position);
+			}, errorHandler);
+		}`
+
+5. Add an empty function named `errorHandler` (we'll flesh this out later):
+
+		`function errorHandler(e) {}`
+
+6. Add the `setDetails` function, which will display the users lat and long information on the screen:
+
+		`function setDetails(position) {
+			$('#lat').text('Latitude: ' + position.coords.latitude);
+			$('#long').text('Longitude: ' + position.coords.longitude);
+			$('#accuracy').text('Accuracy: ' + position.coords.accuracy + ' Meters');
+			$('#geoDetails').fadeIn('slow');
+		}`
+
+7. Now, and add a call to locate just below the method:
+
+		`locate();`
+
+Refresh the page and be sure to give the browser permission to use your location.
+
+8. The API call returns a coords object with the users lat, long and other infromation. By itself, this information isn't very interesting, so let's use this information to place a pushpin on  a map. Start by adding the following function:
+
+		`function placeLocationOnMap(latitude, longitude) {
+    		var location = new Microsoft.Maps.Location(latitude, longitude);
+    		// Add a pushpin to the map representing the current location
+    		var pin = new Microsoft.Maps.Pushpin(location);
+    		_map.entities.push(pin);
+		}`
+
+9. Now, add the following just above the `setDetails(position);` line from step #4:
+
+	`placeLocationOnMap(coordinates.latitude, coordinates.longitude);`
+
+10. Refresh the page and click "Accept" (if prompted) to give your browser permission to use your location. You should now see the map control centered on a location (reasonably) near you. 
+
+11. One of the great features of Geolocation is that the browser will typically adapt its mechanism for determining your position based on the most-reliable information. On mobile devices, this means that the browser takes GPS location data into account. If you have a mobile device emulator (iPhone via XCode or the Windows Phone Emulator in Visual Studio), open this page in the built-in browser. Try modifying the GPS-reported location in the emulator (supported with both iOS and WP7 emulators) and refresh the page to see the mapped location change.
 
 ### II. Graceful Degredation
 
-1. Because geolocation is opt-in, not all of your users will with to use it. What more, users with an older browser won't have the feature available, so you'll want to consider degrading the experience in a way that still makes this feature useful. As such, we'll add some code that will allow the user to manually enter their address, and then use that information to place a pushpin on the map. First, let's add some logic that handles any error that might occur, such as the user declining to share their location automatically:
+1. Because geolocation is opt-in, not all of your users will with to use it. What's more, users with an older browser won't have the feature available, so you'll want to consider degrading the experience in a way that still makes this feature useful. As such, we'll add some code that will allow the user to manually enter their address, and then use that information to place a pushpin on the map. First, let's add some logic that handles any error that might occur, such as the user declining to share their location automatically. Replace the empty `errorHandler` function with the following:
 
-2. Now, let's flesh out the fallback function
+		`function errorHandler(e) {
+	    	if (e.code === 1) { // PERMISSION_DENIED
+	    	    displayError('Please enter your location in the form below');
+	   	 } else if (e.code === 2) { //POSITION_UNAVAILABLE
+	   	     displayError('Cannot find your location. Make sure your network connection is active and refresh the page to try again.');
+	  		} else if (e.code === 3) { //TIMEOUT
+	      	  displayError('Cannot find your location. Refresh the page to try again, or provide you address in the form below.');
+	    	}
+	
+			showFallback();
+		}`
 
-3. Refresh the page, and click "Decline" when you are asked to share your information (you may need to close the window and re-open it). Enter your address by hand and click enter.
+2. Add the `displayError()` function:
 
-### ***[Extra Credit]*** Check out the Modernizr [Shims and Polyfils list]() for a geolocation shim, and add it to the page.
+		`function displayError(msg) {
+			$('#error').text(msg);
+		}`
+
+2. Now, let's flesh out the `showFallback()` function:
+
+		`function showFallback() {
+			$('#details').show();
+			$('#geoDetails').hide();
+
+			$('#findMe').click(function () {
+				$('#error').text('');
+				var address = $('#address').val();
+
+				$.getJSON('http://dev.virtualearth.net/REST/v1/Locations?query=' + address + '&key=' + _creds + '&jsonp=?', function (result) {
+					if (result.resourceSets[0].estimatedTotal > 0) {
+						var loc = result.resourceSets[0].resources[0].point.coordinates;
+						placeLocationOnMap(loc[0], loc[1]);
+					} else {
+						displayError("sorry that address cannot be found");
+					}
+				});
+			});
+		}`
+
+3. Refresh the page, and click "Decline" when you are asked to share your information (you may need to close the window and re-open it) or modify privacy setting in your browser to clear any exepcetions for this site. Enter a location (like 'Taj Mahal' or 'Mount Rushmore') by hand and click enter.
+
+### ***[Extra Credit]*** Check out the Modernizr [Shims and Polyfils list](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills) for a geolocation shim, and add it to the page.
 
 ---
 ## Module 2 - Canvas
