@@ -82,7 +82,7 @@ Refresh the page and be sure to give the browser permission to use your location
 
 		`function displayError(msg) {
 			$('#error').text(msg);
-		}`
+		sales}`
 
 2. Now, let's flesh out the `showFallback()` function:
 
@@ -114,50 +114,229 @@ Refresh the page and be sure to give the browser permission to use your location
 
 ### I. Basic Lines and Shapes
 
-1. Open sales.html and add a canvas element to the page.
+1. Open "4- JavaScript API/labs/canvas/begin/sales.html" and add a canvas element to the page:
 
-2. Open style.css and take note of the css style for the canvas element.
+	`<canvas id="chart" width="600" height="450"></canvas>`
 
-3. Add JS to the bottom of the page to get the canvas element and select the 2d drawing content.
+2. Open style.css and take note of the css style for the canvas element. Open sales.html in the browser.
 
-4. Draw the y axis on the screen
+3. Now, open `js/chart.js` and add some intial code to define some common variables, get the canvas element and select the 2d drawing content:
 
-5. Draw the x axis and the line caps
+		`var _canvas, _ctx;
+	
+		window.onload = function() {
+			var baseY, baseX, chartWidth, salesData;
+         baseY = 375, baseX = 110, chartWidth = 475;
+        
+			_canvas = document.getElementById('chart'); 
+			_ctx = _canvas.getContext("2d");
+		};`
 
-6. Add the salesData object to hold our categories and sales figures.
+The `getContext` function is a special function that the Canvas API uses to retrieve an object we can use to manipulate a canvas. Currently "2d" is the only value accepted as the parameter to this function, though "3d" contexts are in the works among various vendors (WebGL, for instance).
 
-6. Draw the bars on the graph
+4. Now lets add a `drawAxes` function and draw the y-axis on the canvas:
+
+		`function drawAxes(baseX, baseY, chartWidth) {
+	   	var leftY, rightX;
+        	leftY = 5;
+        	rightX = baseX + chartWidth;
+
+        	//Draw Y Axis
+        	_ctx.moveTo(baseX, leftY);
+        	_ctx.lineTo(baseX, baseY);
+
+	      //Draw Arrow for Y Axis
+  	  		_ctx.moveTo(baseX, leftY);
+   	   _ctx.lineTo(baseX + 5, leftY + 5);
+      	_ctx.moveTo(baseX, leftY);
+		   _ctx.lineTo(baseX - 5, leftY + 5);
+
+        	//Define Style and stroke lines
+        	_ctx.strokeStyle = "#000";
+        	_ctx.stroke();
+    	}`
+
+5. Insert a call to `drawAxes` just after the call to `_canvas.getContext('2d'):
+
+		`drawAxes(baseX, baseY, chartWidth);`
+
+6. Refresh the page. You should see a straight black arrow on the left of the canvas.
+
+7. To draw the x-axis, insert the following into `drawAxes` before the `_ctx.strokeStyle` line:
+
+		`//Draw X Axis
+        _ctx.moveTo(baseX, baseY);
+        _ctx.lineTo(rightX, baseY);
+
+        //Draw Arrow for X Axis
+        _ctx.moveTo(rightX, baseY);
+        _ctx.lineTo(rightX - 5, baseY + 5);
+        _ctx.moveTo(rightX, baseY);
+        _ctx.lineTo(rightX - 5, baseY - 5);`
+
+8. Now lets add the bars to our graph. We'll start by defining a salesData object to hold our categories and sales figures. Insert the following just before the line `_canvas = document.getElementById('chart')`:
+
+		`salesData = [{
+            category: "Basketballs",
+            sales: 150
+        }, {
+            category: "Baseballs",
+            sales: 125
+        }, {
+            category: "Footballs",
+            sales: 300
+        }];`
+
+This is a simple Array of sales categories and figures. Typically the kind of information we'd obtain from a database or service, but you can use your imagination, here.
+
+9. To draw the bars on the chart, start by creating a `drawBars` function:
+
+		`function drawBars(salesData, baseX, baseY) {
+	    	var i, length, colors, xPos, barWidth, category, sales;
+        	length = salesData.length;
+        	barWidth = 80;
+        	xPos = baseX + 30;
+
+        	for (i = 0; i < length; i++) {
+         	category = salesData[i].category;
+            sales = salesData[i].sales;
+
+            _ctx.fillRect(xPos, baseY - sales-1, barWidth, sales);
+            
+            xPos += 125;
+        	}        
+    	}`
+
+The relevant piece of this function is `_ctx.fillRect`, which creates a rectangle on the canvas at a given x (xPos) and y (baseY - sales-1) position, and with a specified width (barWidth) and height (sales).
+
+10. Now add the following just after the call to `drawAxes`:
+
+	`drawBars(salesData, baseX, baseY)`
+
+11. Refresh the page to see your beautiful canvas chart! 
 
 ### II. Working with Text
 
-1. Add code to label the x-axis
+1. Now that we have a basic chart, let's label our axes and the individual bars. Start by adding a function called `labelAxes`:
 
-2. Add code to label the y-axis
+		`function labelAxes() {
+       	var height, heightOffset, widthOffset;
+        	height = _ctx.canvas.height;
+        	heightOffset = height/2;
+        	widthOffset = _ctx.canvas.width/2;
 
-3. Add code to label the bar chart
+        	_ctx.font = "bold 18px sans-serif";
+        	_ctx.fillText("Units Sold", 10, heightOffset);
+         _ctx.fillText("(in 100s)", 17, heightOffset + 17);
+         _ctx.fillText("Product", widthOffset, height - 20);
+      }`
+
+Adding text to a canvas is as simple as calling the `fillText` function with the text and the x and y coordinates on which to place the text. The `font` property is also available, and accepts anything you can use for a CSS `font` style.
+
+2. Add a call to `labelAxes()` just after the call to `drawBars`:
+
+	`labelAxes();`
+
+3. Refresh the page to see your labels.
+4. Now let's label the bars. Start by creating a `labelBar` function:
+
+		`function labelBar(category, xPos, baseY) {
+			_ctx.fillStyle = "#000";
+			_ctx.font = "14px sans-serif";
+	    	_ctx.fillText(category, xPos - (category.length/2 - 10), baseY + 20);
+		}`
+
+Similar to step #2, we call `fillText`, this time using the category name from our data object for the label.
+
+5. To call `labelBar`, add the following just before the last line of the `drawBars` function:
+
+		`labelBar(category, xPos, baseY);`
+
+6. Refresh the page.
 
 ### III. Working with Colors and Gradients
 
-1. Create an array or colors and set the fillStyle
+1. The last steps of this module will explore some different options for adding color and images to a canvas. We'll start by replacing the black bars on our graph with some peppy colors. Start by adding the following colors array to the `drawBars` function, just before the `for` loop:
 
-2. Refresh the page
+	`colors = ["#e34c26", "#0092bf", "rgba(240, 101, 41, 0.90)"];  `
 
-3. Add a create gradient function
+2. To use these elements, we can add the following inside of the `for` loop, just before the call to `_ctx.fillRect`:
 
-4. Call this function in place of the existing fillStyle line.
+	`_ctx.fillStyle = colors[i % length];`
 
-5. Refresh the page.
+3. Refresh the page to see the new colors.
+
+4. It's also possible to use both linear and radial gradients in shapes on a canvas, so let's replace these basic colors with a fancy gradient. Start by adding `createGradient` function:
+
+		`function createGradient(x, y, width, color) {
+      	var gradient;
+
+        	gradient = _ctx.createLinearGradient(x, y, x+width, y);
+        	gradient.addColorStop(0, color);
+        	gradient.addColorStop(1, "#efe3e3");
+
+        	return gradient;
+    	}`
+
+This simple function accepts some information about where the shape will be rendered on the screen and a primary color and, using that information, calls the `createLinearGradient` function to obtain a gradient object. We then add two color stops (the first with our primary color and the second with a shade of grey) before returning the gradient object.
+
+5. Now that we have a gradient function we can use it by replacing the existing call to `fillStyle` in the `drawBars` function with the following:
+
+		`_ctx.fillStyle = createGradient(xPos, baseY - sales-1, barWidth, colors[i % length]); `
+
+6. Refresh the page to see the gradient in action.
 
 ### IV. Adding Images
 
-1. Remove the fillStyle and fillRect code, and add the following code to create an image and set it's onload.
+1. For the final enhancement to our bar chart, we'll replace the rectangular bars with images. Start by commenting out or removing the call to `drawBars` at the top of the `chart.js` file.
 
-2. set the image src to the correct image path.
+2. Now let's add a `drawImages` function:
 
-### **[Extra Credit]** Use the [Explorer Canvas](
-3. Draw the x axis on the screen
+		`function drawImages(salesData, baseX, baseY) {
+	    	var i, length, xPos, barWidth;
+        	length = salesData.length;
+        	barWidth = 80;
+        	xPos = baseX + 30;
 
-4. Draw the y axis and the line caps) and [Canvas Text](http://code.google.com/p/canvas-text/) libraries to polyfill canvas support for older browsers. See this [MSDN Magazine Article]() for more information.
+        	for (i = 0; i < length; i++) {
+        		var sales, category, img;
+            category = salesData[i].category;
+            sales = salesData[i].sales;                
+            img = new Image();
+         }
+    	}`
+
+Similar to our `drawBars` function, this function will loop through the collection of categories. in this case, however, we're defining a new DOM Image element to be added to our Canvas.
+
+3. Set the source of each `img` element by adding the following at the end of the `for` loop:
+
+	`img.src = "../assets/" + category + ".jpg";`
+
+This line will load each image into an in-memory element.
+
+4. Once each image is loaded, we can use it on our canvas. To make sure we don't attempt to access the image until after it's been fully loaded, we'll add the following to the image `onload` event:
+
+		`img.onload = (function(height, base, currentImage, currentCategory) {
+       	return function() {
+         	var yPos;
+            yPos = base - height - 1;
+
+            _ctx.drawImage(currentImage, 30, 30, barWidth, height, xPos, yPos, barWidth, height);
+            labelBar(currentCategory, xPos, baseY);
+
+            xPos += 125;            
+          }
+       })(sales, baseY, img, category);`
+
+There's some JavaScript closure trickery here that we need to ensure that the onload event obtains the correct values for sales, baseY, img and category when it fires. Beyond that, the relevant piece of information is the call to `drawImage`, which takes a DOM Image element and performs a manipulation or translation of the image before rendering it to the screen. `drawImage` has several overloads, with the one above being the most complex as it both crops and resizes the image to match the dimensions of our bars before drawing them to the screen. See the resources below for more information about the `drawImage` funciton.
+
+5. Now let's add a call to 	`drawImages` just before the call to `labelAxes`:
+
+	`drawImages(salesData, baseX, baseY);`
+
+6. Refresh the page and revel in your canvas expertise!
+
+### **[Extra Credit]** Use the [Explorer Canvas](http://code.google.com/p/explorercanvas/) and [Canvas Text](http://code.google.com/p/canvas-text/) libraries to polyfill canvas support for older browsers. See this [MSDN Magazine Article]() for more information.
 
 ---
 ## Module 3 - Web Sockets
@@ -204,5 +383,6 @@ ___
 
 1. [Integrating Geolocation into Web Applications](http://msdn.microsoft.com/en-gb/magazine/hh580735.aspx)
 2. [Using HTML5 Canvas for Data Visualization]()
-3. [Explorer Canvas]()
-4. 
+3. [Canvas Chapter from Dive Into HTML5]() 
+4. [Explorer Canvas]()
+5. [Canvas Text]()
