@@ -46,24 +46,24 @@ This contains all of the source and presentations used for the 2012 CodeMash HTM
 ### II - HTML5 Core
 
 #### Slides
-#### Lab 1
+#### [Lab 1](https://github.com/csell5/HTML5-Compiler/tree/master/2-%20HTML5%20Core)
 
 ### III - CSS3
 
 #### Slides
-#### Lab 2
+#### [Lab 2](https://github.com/csell5/HTML5-Compiler/tree/master/3-%20CSS3)
 
 ### IV - JavaScript APIs
 
 #### Slides
-#### Lab 3
+#### [Lab 3](https://github.com/csell5/HTML5-Compiler/tree/master/4%20-%20JavaScript%20API)
 
 ### V - JavaScript the Language
 
 #### Slides
-#### Lab 4
+#### [Lab 4](https://github.com/csell5/HTML5-Compiler/tree/master/5%20-%20JavaScript)
 
 ### VI - Responsible Web Design
 
 #### Slides
-#### Lab 5
+#### [Lab 5](https://github.com/csell5/HTML5-Compiler/tree/master/6%20-%20Responsible%20Web%20Design)
