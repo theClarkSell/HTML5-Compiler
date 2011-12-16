@@ -244,28 +244,62 @@ Now, refresh the page and bask in the awesome mobile-ness of it all!
 ---
 ## Module 4 - Transformations
 
-### I. 2D Transformations
-
 1. Open the "3- CSS3\labs\transformations\begin\photos.html" file.
 
-2. Open "css/style.css" and create a style declaration that rotates the first photo (uses a CSS3 pseudo-selector)
+2. Open "css/style.css" and create a style declaration that rotates the images by 25 degrees to the left:
+	
+	img:first {
+		-moz-transform: rotate(-25deg); /* Firefox */ 
+		-ms-transform: rotate(-25deg); /* Internet Explorer */ 
+		-o-transform: rotate(-25deg); /* Opera */ 
+		-webkit-transform: rotate(-25deg); /* WebKit */
+	}
 
-3. Now create a style declaration that translates the second photo.
+3. Refresh the page. Now, comment out or remove that style, and add a style that translates the photos 40 pixels to the right, and 20 pikels down:
 
-4. Create a style declaration that skews the third photo
+	-moz-transform: translate(40px, 20px);
+	-ms-transform: translate(40px, 20px); 
+	-o-transform: translate(40px, 20px); 
+	-webkit-transform: translate(40px, 20px);
 
-5. Create a style declaration that scales the fourth photo up
+Refresh the page, and hover over an image to display the overlay and reveal how far the image has moved relative to its original position.
 
-6. Combine multiple transformations to create a ribbon effect in the top-left corner of the page.
+4. Comment out the translate style, and create a style declaration that skews the photos 10 degrees along the x-axis, and 5 degrees along the y-axis:
+
+	-moz-transform: skew(10deg, 5deg);
+	-ms-transform: skew(10deg, 5deg); 
+	-o-transform: skew(10deg, 5deg); 
+	-webkit-transform: skew(10deg, 5deg);
+
+5. Refresh the page to view the result. Now, comment out that style and create a style declaration that scales the photos down to 75% of their original size:
+
+	-moz-transform: scale(.75, .75);
+	-ms-transform: scale(.75, .75); 
+	-o-transform: scale(.75, .75); 
+	-webkit-transform: scale(.75, .75);
+
+6. Refresh the page and view the result. Now, let's combine multiple transformations to create a ribbon effect in the top-left corner of the page. First, open photos.html and uncomment the `<h2>` element with the text "CSS3!" just under the `<h1>` on the page.
+
+7. Then, open desktop.css and find the first `h2` selector. Add the following transforms:
+
+		-moz-transform: rotate(-40deg) scale(0.75) translate(-38%, -950%);
+		-ms-transform: rotate(-40deg) scale(0.75) translate(-38%, -950%);
+		-o-transform: rotate(-40deg) scale(0.75) translate(-38%, -950%);
+		-webkit-transform: rotate(-40deg) scale(0.75) translate(-38%, -950%);
+	
+8. Refresh the page. You should see a Ribbon with the text "CSS3!" in the upper right corner of the page.
 
 ### **[Extra Credit]** add a webkit-only (Chrome and Safari) box-reflection effect to images on the page.
 
-### II. 3D Transformations
-1. Add the transform-style property.
+1. Open desktop.css, and add the following to the first `img` selector:
 
-2. Create a style that rotates the fifth photo on the page.
+	`-webkit-box-reflect: below;`
 
-3. Create a style that translates the sixth photo on the page.
+2. Refresh the page. To change the reflection to look more "web 2.0," let's add a gradient:
+
+	`-webkit-box-reflect: below 0 -webkit-gradient(linear,50% 0,50% 100%,from(transparent),to(white));`
+
+3. Refresh the page again.
 
 ---
 ## Module 5. Transitions and Animations
