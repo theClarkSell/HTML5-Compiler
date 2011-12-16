@@ -112,7 +112,7 @@
 
 5. Now, refresh the page and make sure the new font shows up. View the Network tab of your browser and note how the browser loaded the font file (.woff, .oft, etc.) behind the scenes for you.
 
-6. You'll notice that our @font-face declaration includes multople formats. Try loading the page in multiple browsers to see which browsers use which formats.
+6. You'll notice that our @font-face declaration includes multiple formats. Try loading the page in multiple browsers to see which browsers use which formats.
 
 ***Question to consider:*** If you were to serve fonts from your server to users through the browser, what information might your server need to have about fonts to enable this capability?
 
@@ -121,26 +121,125 @@
 ---
 ## Module 3 - Media Queries
 
-1. First, check out [mediaqeri.es](http://mediaqueri.es) to get an idea of the power of this CSS3 module. This lab will present a very basic case so that you have get a grounded understanding of Media Queries.
+1. First, check out [mediaqeri.es](http://mediaqueri.es) to get an idea of the power of this CSS3 module. This lab will present a very basic case so that you gain a grounded understanding of Media Queries.
 
 2. Open the "3- CSS3\labs\media-queries\begin\photos.html" file.
 
-3. Open css/desktop.css and add the following @media declaration to the page: (for 600px max-width)
+3. Open css/desktop.css and add the following @media declaration to the bottom of the page (we do this in case we need to override any styles declared above):
 
-4. Change this to use device-width, and explain the difference.
+	`@media screen and (max-width:1024px) {
+		
+	}`
 
-5. Now, remove this declaration, and instead add the conditional check to the `<link>` tag for each stylesheet (mobile and desktop) with (min-device-width: 480px)
+4. The @media declaration allows us to specify rules that the browser will evaluate at runtime. In this case, The rules are `screen` (as opposed to `print`) and a maximum screen width of 1024px, similar to what one would find on a tablet or slate device. If both rules evaluate to true, all styles inside of this block of css will be applied. For starters, let's define some styles that change the size of our images and container elements, as well as move our menus around.
 
-### **[Extra Credit]** Add a conditional comment that includes the correct stylesheet for older versions of IE.
+		`@media screen and (max-width:1024px) {
+			body {
+				min-width: 480px;
+				max-width: 800px;
+			}
+	
+			#banner {
+				height: 110px;
+				background: #eaeaea;
+			}
+	
+			#menu li {
+				display: block;
+				margin-top: 3px;
+				margin-bottom: 3px;
+			}
+	
+			#menu li.tags a,
+			#menu li.galleries a,
+			#menu li.account a {
+				background: none;	
+			}
+	
+			#menu li.login {
+				display: none;
+			}
+	
+			img {
+				width: 500px;
+				height: 375px;
+				align: center;
+			}
+	
+			ul.thumbnails li {
+				width: 515px;
+			    height: 390px;
+			    line-height: 200px;
+			}
+		}`
 
-1. Open IE9
-2. Hit F12 and change the verson to IE8. Notice that the page is now styled with the mobile stylesheet.
-3. Add the following conditional comment:
+5. Refresh the page in the browser. If your window is larger than 1024px, you probably noticed nothing different. You can see the change by resizing the browser window until the images stack up and the top menu moves into a stacked view as well. You can also view the page on a slate or tablet emulator.
 
-	<!—[if lt IE 9]>
-		<link href="desktop.css" rel="stylesheet" media="screen"> 	<![endif]—>
+6. When we design for mobile experiences, it's important to think about user interaction as well as the look and feel of a site. Because the primary interaction on phones and slates is touch, many of our mouse-based interactions won't directly translate. On our photo gallery page, we've used CSS to create a nice overlay effect with the name of each animal when the use hovers over the picture with a mouse. Since the hover event won't trigger on a mobile until the user clicks an image, we can use our Media Queries style to change the experience for our mobile users, and display the overlay by default. Add the following at the end of the @media set of styles:
 
-4. Refresh the page.
+		`ul.thumbnails li span.image-overlay {
+			display:block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			line-height: normal;
+			width: 515px;
+			padding: 5px;
+		}
+	
+		ul.thumbnails li {
+		    background: #f3f6f7;
+		    border-color: #dbe2e5;
+
+		    /*CSS3 properties*/
+		    border-radius: 7px;
+		    -moz-border-radius: 7px;
+		    -webkit-border-radius: 7px;
+
+		    -moz-box-shadow: 0px 0px 20px 5px #A9A9A9;
+		    -webkit-box-shadow: 0px 0px 20px 5px #A9A9A9;
+			box-shadow: 0px 0px 20px 5px #A9A9A9;
+		}`
+
+7. Refresh the page to view the result. Resize the window back to a larger size and notice how the style reverts back to default.
+
+8. Now, make the browser window even smaller, or view the page with an iPhone, Android or Windows Phone emulator. You'll notice that the images are too large for mobile phones. We can fix this by adding another `@media` ruleset just below our first set:
+
+		@media screen and (max-width:480px) {
+			body {
+				min-width: 120px;
+				max-width: 320px;
+			}
+	
+			h1 {
+				font-size: 1.5em;
+			}
+	
+			img {
+				width: 250px;
+				height: 187.5px;
+			}
+	
+			ul.thumbnails li {
+				width: 265px;
+	  		   height: 200px;
+			   line-height: 200px;
+			}
+	
+			ul.thumbnails li span.image-overlay {
+		  	  width: 265px;
+			}
+		}
+
+9. Now refresh the page again, and things should look just right for a smaller screen. Notice that, for this set of rules, we were able to keep many of the same rules defined in the first `@media` set, while only overriding those related to the size of content on the page.
+
+10. We have one more (non-CSS) step to take to deliver a truly mobile experience. If you viewed the photo page in a mobile emulator, you probably noticed a "zoomed out" effect on the screen. To fix this, we need only add a `meta` tag to `photos.html`:
+
+	`<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>`
+
+Now, refresh the page and bask in the awesome mobile-ness of it all! 
+
+### **[Extra Credit]** It's also possible to apply media queries on `<link>` includes by using the `media` property. Using the empty desktop.css and mobile.css files in the css folder, move the existing styles and apply these style sheets using only the `stylesheet` references on the photos.html page. Check out [this tutorial](http://webdesignerwall.com/tutorials/css3-media-queries) for more information.
 
 ---
 ## Module 4 - Transformations

@@ -1,0 +1,215 @@
+/*  Reset default styles
+-------------------------------------------------------*/
+body {
+    background-color: #eaeeef;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Verdana, Arial, Sans-Serif;
+    color: #343434;
+    min-width: 960px;
+}
+
+a {
+    color: #1170a9;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0d527b;
+}
+
+h1 {
+	/* Single Shadow */
+	text-shadow: 5px 5px 5px #bbb;
+	
+	/* Multi-shadow */
+	/*text-shadow: 0 -2px 3px #fff, 0 -4px 3px #aaa, 0 -6px 6px #666, 0 -8px 9px #000;*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+h3 {
+    font-size: 1.1em;
+}
+
+p {
+    padding: 10px 0;
+    margin: 0;
+}
+
+img {
+	width: 202px;
+	height: 202px;	
+	
+	-moz-border-radius: 50px 0px 50px 7px;
+    -webkit-border-radius: 50px 0px 50px 0px;
+	border-radius: 50px 0px 50px 0px;
+	
+	-moz-box-shadow: 0px 0px 10px #006400;
+    -webkit-box-shadow: 0px 0px 10px #006400;
+	box-shadow: 0px 0px 10px 1px #006400;
+}
+
+/*  Basic Layout
+-------------------------------------------------------*/
+#banner {
+    padding: 20px 20px 0 20px;
+    height: 60px;
+    background: #eaeaea url("../../../assets/header-bkg.png") repeat-x left bottom;
+    font-family: Tahoma;
+    border-bottom: 1px solid #e0e0e0;
+    
+    /*CSS3 properties*/
+    text-shadow: -1px 1px 1px #fff;
+}
+
+.site-title {
+	margin: 0;
+    padding: 0;
+    font-size: 1.75em;
+    display: inline;
+}
+
+.site-title a {
+	color: #2f5163;
+}
+
+#page {
+    padding: 20px 15px; 
+}
+
+#footer {
+    clear: both;
+    border-top: 1px dotted #c7ccd3;
+    margin: 20px 0 20px 0;
+    padding: 20px 0 20px 0;
+    font-size: 0.8em;
+    text-align: center;
+    color: #343434;
+}
+
+/*  Menu
+----------*/
+#menu {
+    padding: 0;
+    margin: 0 0 0 60px;
+    display: inline;
+}
+    
+#menu li {
+    padding: 0;
+    margin: 0 24px 0 0;
+    display: inline;
+}
+        
+#menu li a {
+    padding: 12px 12px 12px 40px;
+    color: #0F6395;
+}
+
+#menu li a:hover {
+    color: #09354f;
+}
+
+#menu li.galleries a {
+    background: url("../../../assets/icon-gallery.png") no-repeat 0 50%;
+}
+
+#menu li.tags a {
+    background: url("../../../assets/icon-tags.png") no-repeat 0 50%;
+}
+
+#menu li.account a {
+    background: url("../../../assets/icon-account.png") no-repeat 0 50%;
+}
+
+#menu li.login {
+    margin-left: 0;
+    font-size: .75em;
+}
+            
+
+/*  Thumbnail Layout
+-------------------------------------------------------*/
+ul.thumbnails {
+    margin:0;
+    padding:0;
+}
+ul.thumbnails li {
+    position: relative;
+    list-style: none;
+    float: left;
+    margin: 8px;
+    padding: 5px;
+    font-size: small;
+    text-align: center;
+    border: 1px solid transparent;
+    width: 202px;
+    height: 202px;
+    line-height: 200px;
+    display: block;
+}
+
+ul.thumbnails li span {
+    display: block;
+}
+
+ul.thumbnails li span.image-overlay {
+    display: none;
+    width: 200px;
+    padding: 5px;
+    background-color: #fff;
+    color: #343434;
+	
+	/*CSS3 properties*/
+    border-radius: 7px 7px 0 0;
+    -moz-border-radius: 7px 7px 0 0;
+    -webkit-border-radius: 7px 7px 0 0;
+    background-color: rgba(255, 255, 255, 0.75);
+    word-wrap: break-word;
+}
+
+ul.thumbnails li span.below-image {
+    line-height: normal;
+}
+
+ul.thumbnails li img {
+    margin: auto;
+    display: inline;
+    vertical-align: middle;
+}
+
+ul.thumbnails li:hover {
+    background: #f3f6f7;
+    border-color: #dbe2e5;
+    
+    /*CSS3 properties*/
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    
+	-moz-box-shadow: 0px 0px 20px 5px #A9A9A9;
+    -webkit-box-shadow: 0px 0px 20px 5px #A9A9A9;
+	box-shadow: 0px 0px 20px 5px #A9A9A9;
+}
+
+ul.thumbnails li:hover span.image-overlay {
+   display: block;
+   position: absolute;
+   top: 0;
+   left: 0;
+   line-height: normal;
+}
+
+/* Add Media Queries Styles Here */
