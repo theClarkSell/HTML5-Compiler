@@ -10,36 +10,37 @@ This contains all of the source and presentations used for the 2012 CodeMash HTM
 ### Some Tools
 
 * [Git (for source control)](http://git-scm.org)
-* [GitHub Account](http://github.com) & [Local Configuration](http://#)
+* [GitHub Account](http://github.com) & [Local Configuration](http://help.github.com/)
 
 ### A Browser (Your Choice)
 
-* Internet Explorer 9+
-* Chrome vN
-* Firefox vN
-* Opera
-* Safari
+* [Internet Explorer 9+](http://www.beautyoftheweb.com/)
+* [Chrome](https://www.google.com/chrome)
+* [Firefox](http://www.mozilla.org/en-US/firefox/new/)
+* [Opera](http://www.opera.com/)
+* [Safari](http://www.apple.com/safari/download/)
 
 ### A Text Editor
 
 #### Windows
 
-* WebMatrix v1+
-* or, Visual Studio 2010+
+* [WebMatrix v1+](http://www.webmatrix.com)
+* [Visual Studio 2010+](http://www.microsoft.com/visualstudio/en-us/try?CR_CC=200060456)
+* [Sublime Text](http://www.sublimetext.com/)
 
 #### Mac
 
-* TextMate
-* MacVim
-* Sublime
+* [TextMate](http://macromates.com/)
+* [MacVim](http://code.google.com/p/macvim/)
+* [Sublime Text](http://www.sublimetext.com/)
 
 #### Linux
 
-* GVim
-* jEdit
-* Eclipse
+* [GVim](http://www.vim.org/download.php)
+* [jEdit](http://jedit.org/)
+* [Eclipse](http://www.eclipse.org/)
 
-## Modules
+## Labs
 
 ### I - Introduction to HTML5
 
