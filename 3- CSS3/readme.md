@@ -9,17 +9,17 @@
 	
 2. Open "css/style.css" and add the following to the `img` selector:
 	
-	`-moz-border-radius: 7px 7px 7px 7px;
- 	-webkit-border-radius: 7px 7px 7px 7px;
- 	border-radius: 7px 7px 7px 7px;`	
+		-moz-border-radius: 7px 7px 7px 7px;
+ 		-webkit-border-radius: 7px 7px 7px 7px;
+ 		border-radius: 7px 7px 7px 7px;	
 
 3. Refresh the page
 	
 4. Now change modify the `img` selector to create an alternative box effect:
 
-	`-moz-border-radius: 50px 0px 50px 7px;
-   -webkit-border-radius: 50px 0px 50px 0px;
-	border-radius: 50px 0px 50px 0px;`
+		`-moz-border-radius: 50px 0px 50px 7px;
+   	-webkit-border-radius: 50px 0px 50px 0px;
+		border-radius: 50px 0px 50px 0px;`
 	
 ### **[EXTRA CREDIT]** Add a Polyfill that creates border-radius effects for older browsers (Assumes the use of IE9 to target IE8 for testing):
 
@@ -31,18 +31,18 @@
 
 3. To get those rounded corners back, we can use Modernizr and a Polyfilling library called [PIE.js](http://css3pie.com/). Start by adding the following to the `<script>` block at the bottom of photos.html:
 
-		Modernizr.load({
-			test: Modernizr.borderradius,
-			nope: '../js/PIE.js',
-			callback: function() {
-			}
-		});
+			Modernizr.load({
+				test: Modernizr.borderradius,
+				nope: '../js/PIE.js',
+				callback: function() {
+				}
+			});
 
 4. The snippet above will test the Modernizr.borderradius property and, if the browser doesn't support border-radius, will load the PIE.js library we've already included in the js folder for this module. Once PIE has loaded, we need to tell the plugin which elements need some style-assistance. In side of the `Modernizr.load` callback property, add the following:
 
-		$('img').each(function() {
-			PIE.attach(this);
-		});
+			$('img').each(function() {
+				PIE.attach(this);
+			});
 
 5. Now refresh the page, and notice that your rounded corners are back. If you have the time, or you're looking for extra-extra credit, why not try adding PIE to the CSS3 properties we're using when a user hovers over an image (you'll notice that this is still not working).
 
@@ -50,17 +50,17 @@
 
 1. Open style.css and add the following to the `img` selector:
 
-	`-moz-box-shadow: 0px 0px 10px #006400;
-   -webkit-box-shadow: 0px 0px 10px #006400;
-	box-shadow: 0px 0px 10px 1px #006400;`
+		`-moz-box-shadow: 0px 0px 10px #006400;
+   	-webkit-box-shadow: 0px 0px 10px #006400;
+		box-shadow: 0px 0px 10px 1px #006400;`
 
 2. Refresh the page, and notice the shadow effect added around all of the images.
 
 3. Now lets add a similar effect to the overlay box that appears when you hover over an image. Find the selector `ul.thumbnails li:hover.` (Note: `hover` is a CSS pseudo-selector that allows us to apply styles to a set of elements only when an event is triggered, which creates an animation effect. But more on that later. Add the following css to the styles in that selector:
 	
-	`-moz-box-shadow: 0px 0px 20px 5px #A9A9A9;
-   -webkit-box-shadow: 0px 0px 20px 5px #A9A9A9;
-	box-shadow: 0px 0px 20px 5px #A9A9A9;`
+		`-moz-box-shadow: 0px 0px 20px 5px #A9A9A9;
+   	-webkit-box-shadow: 0px 0px 20px 5px #A9A9A9;
+		box-shadow: 0px 0px 20px 5px #A9A9A9;`
     
 4. Refresh the page, and hover over a couple of images to view the effect. Notice the difference in the effect between the images and the hover overlay.
 
@@ -74,13 +74,13 @@
 
 2. Refresh the page, and notice the shadow effect added to the text.
 
-3. It possible to add multple shadow effects to text, by delimiting each effect with a comma. Let's add four seperate effects to our header with the following:
+3. It possible to add multiple shadow effects to text, by delimiting each effect with a comma. Let's add four separate effects to our header with the following:
 
 	`text-shadow: 0 -2px 3px #fff, 0 -4px 3px #aaa, 0 -6px 6px #666, 0 -8px 9px #000;`
 
 4. Now refresh the page to view the different effect this creates.
 
-5. Spend a few moments tweaking the CSS property values and noting the change to each element in the browser. If you have time, take a look at the [text-shadow tutorial on CSS3.info](http://www.css3.info/preview/text-shadow/) for informaiton on each component piece of this style.
+5. Spend a few moments tweaking the CSS property values and noting the change to each element in the browser. If you have time, take a look at the [text-shadow tutorial on CSS3.info](http://www.css3.info/preview/text-shadow/) for information on each component piece of this style.
 
 ---
 ## Module 2 - Web Fonts
@@ -127,13 +127,11 @@
 
 3. Open css/desktop.css and add the following @media declaration to the bottom of the page (we do this in case we need to override any styles declared above):
 
-	`@media screen and (max-width:1024px) {
-		
-	}`
+	`@media screen and (max-width:1024px) {	}`
 
 4. The @media declaration allows us to specify rules that the browser will evaluate at runtime. In this case, The rules are `screen` (as opposed to `print`) and a maximum screen width of 1024px, similar to what one would find on a tablet or slate device. If both rules evaluate to true, all styles inside of this block of css will be applied. For starters, let's define some styles that change the size of our images and container elements, as well as move our menus around.
 
-		`@media screen and (max-width:1024px) {
+		@media screen and (max-width:1024px) {
 			body {
 				min-width: 480px;
 				max-width: 800px;
@@ -171,13 +169,13 @@
 			    height: 390px;
 			    line-height: 200px;
 			}
-		}`
+		}
 
 5. Refresh the page in the browser. If your window is larger than 1024px, you probably noticed nothing different. You can see the change by resizing the browser window until the images stack up and the top menu moves into a stacked view as well. You can also view the page on a slate or tablet emulator.
 
 6. When we design for mobile experiences, it's important to think about user interaction as well as the look and feel of a site. Because the primary interaction on phones and slates is touch, many of our mouse-based interactions won't directly translate. On our photo gallery page, we've used CSS to create a nice overlay effect with the name of each animal when the use hovers over the picture with a mouse. Since the hover event won't trigger on a mobile until the user clicks an image, we can use our Media Queries style to change the experience for our mobile users, and display the overlay by default. Add the following at the end of the @media set of styles:
 
-		`ul.thumbnails li span.image-overlay {
+		ul.thumbnails li span.image-overlay {
 			display:block;
 			position: absolute;
 			top: 0;
@@ -199,7 +197,7 @@
 		    -moz-box-shadow: 0px 0px 20px 5px #A9A9A9;
 		    -webkit-box-shadow: 0px 0px 20px 5px #A9A9A9;
 			box-shadow: 0px 0px 20px 5px #A9A9A9;
-		}`
+		}
 
 7. Refresh the page to view the result. Resize the window back to a larger size and notice how the style reverts back to default.
 
@@ -248,35 +246,35 @@ Now, refresh the page and bask in the awesome mobile-ness of it all!
 
 2. Open "css/style.css" and create a style declaration that rotates the images by 25 degrees to the left:
 	
-	img:first {
-		-moz-transform: rotate(-25deg); /* Firefox */ 
-		-ms-transform: rotate(-25deg); /* Internet Explorer */ 
-		-o-transform: rotate(-25deg); /* Opera */ 
-		-webkit-transform: rotate(-25deg); /* WebKit */
-	}
+		img {
+			-moz-transform: rotate(-25deg); /* Firefox */ 
+			-ms-transform: rotate(-25deg); /* Internet Explorer */ 
+			-o-transform: rotate(-25deg); /* Opera */ 
+			-webkit-transform: rotate(-25deg); /* WebKit */
+		}
 
-3. Refresh the page. Now, comment out or remove that style, and add a style that translates the photos 40 pixels to the right, and 20 pikels down:
+3. Refresh the page. Now, comment out or remove that style, and add a style that translates the photos 40 pixels to the right, and 20 pixels down:
 
-	-moz-transform: translate(40px, 20px);
-	-ms-transform: translate(40px, 20px); 
-	-o-transform: translate(40px, 20px); 
-	-webkit-transform: translate(40px, 20px);
+		-moz-transform: translate(40px, 20px);
+		-ms-transform: translate(40px, 20px); 
+		-o-transform: translate(40px, 20px); 
+		-webkit-transform: translate(40px, 20px);
 
 Refresh the page, and hover over an image to display the overlay and reveal how far the image has moved relative to its original position.
 
 4. Comment out the translate style, and create a style declaration that skews the photos 10 degrees along the x-axis, and 5 degrees along the y-axis:
 
-	-moz-transform: skew(10deg, 5deg);
-	-ms-transform: skew(10deg, 5deg); 
-	-o-transform: skew(10deg, 5deg); 
-	-webkit-transform: skew(10deg, 5deg);
+		-moz-transform: skew(10deg, 5deg);
+		-ms-transform: skew(10deg, 5deg); 
+		-o-transform: skew(10deg, 5deg); 
+		-webkit-transform: skew(10deg, 5deg);
 
 5. Refresh the page to view the result. Now, comment out that style and create a style declaration that scales the photos down to 75% of their original size:
 
-	-moz-transform: scale(.75, .75);
-	-ms-transform: scale(.75, .75); 
-	-o-transform: scale(.75, .75); 
-	-webkit-transform: scale(.75, .75);
+		-moz-transform: scale(.75, .75);
+		-ms-transform: scale(.75, .75); 
+		-o-transform: scale(.75, .75); 
+		-webkit-transform: scale(.75, .75);
 
 6. Refresh the page and view the result. Now, let's combine multiple transformations to create a ribbon effect in the top-left corner of the page. First, open photos.html and uncomment the `<h2>` element with the text "CSS3!" just under the `<h1>` on the page.
 
@@ -306,23 +304,57 @@ Refresh the page, and hover over an image to display the overlay and reveal how 
 
 1. Open the "3- CSS3\labs\transitions_and_animation\begin\photos.html" file.
 
-2. Open "css/style.css" and create a style declaration that scales and tranlates each photo when I hover over them with my mouse.
+2. Now open "css/style.css." In order to create animations in CSS3, we must first specify a transition for a set of elements. We want to perform some CSS acrobatics on our images, so add the following to the `img` selector:
 
-3. View this in the browser and hover.
+		-webkit-transition: all 2s;
+		-moz-transition: all 2s;
+		-o-transition: all 2s;
+		-ms-transition: all 2s;  
 
-4. Modify the transition-duration and add a transition-timing-function
+Here, we're specifying that we want to animate all of the modified properties of an element. If we want to modify only a single property (like width, for instance) we can specify that in place of `all`. The "`2s`" string is the transition duration, in this case, two seconds.
 
-5. Add a transition-delay
+3. Of course, transitions by themselves are useless. To leverage their power, we need to specify both a trigger for the transition, as well as one or more properties that should change in the transition. Our trigger, in this case, will be when the user hovers over an image, and we can use the `:hover` pseudo class to define the elements to animate:
+
+		img:hover {
+			-webkit-transform: scale(2);
+			-moz-transform: scale(2);
+			-o-transform: scale(2);
+			-ms-transform: scale(2);
+	
+			z-index: 1000;
+		}
+
+Here, we're combining a CSS3 transformation with our transition to effectively animate the process of scaling (by 2) a hovered image. (and the z-index ensures that the hovered image floats to the top)
+
+3. Now that we've added our transition, let's view it in action. Refresh the page, and hover over an image.
+
+4. This is a nice effect, but you no-doubt notices that its not particularly smooth. To add some smoothness, we can use a transition timing function. The available options are `ease`, `linear`, `ease-in`, `ease-out`, and `ease-in-out`. We'll use `ease-in-out` and add it to the end of each transition declaration, like so:
+
+		-webkit-transition: all 2s ease-in-out;
+		-moz-transition: all 2s ease-in-out;
+		-o-transition: all 2s ease-in-out;
+		-ms-transition: all 2s ease-in-out;
+
+5. Refesh the page and hover over an image to see the effect of the timing function.
+
+6. The final transition property we'll add is the transition delay, which, as it sounds allows us to specify a period of time to wait before firing the transition. Since we don't want our images to begin to scale unless a user remains over the image, we'll add a delay of 250 milliseconds as the last property on our transition declarations:
+
+		-webkit-transition: all 2s ease-in-out 250ms;
+		-moz-transition: all 2s ease-in-out 250ms;
+		-o-transition: all 2s ease-in-out 250ms;
+		-ms-transition: all 2s ease-in-out 250ms;
+
+7. Refresh the page and hover, one last time to see the delay in (in-)action.
 
 ### **[Extra Credit]** Do some research online about CSS Animation Keyframes and modify this sample to utilize that featre.
 
 ---
 # Resources
 
-1. mediaqueri.es
+1. [mediaqueri.es](http://mediaqueri.es)
 2. [Bulletproof Font-Face](http://paulirish.com/2009/bulletproof-font-face-implementation-syntax/)
 [Google Web Fonts](http://www.google.com/webfonts)
 3. [FontSquirrel.com](http://www.fontsquirrel.com/fontface/generator)
-4. The Book of CSS3
-5. CSS3.info
+4. [The Book of CSS3](http://thebookofcss3.com/)
+5. [CSS3.info](http://css3.info)
 6. [CSSPie](http://css3pie.com/)

@@ -49,8 +49,10 @@ p {
 }
 
 img {
+	position: relative;
 	width: 202px;
 	height: 202px;	
+	z-index: 0;
 	
 	-moz-border-radius: 50px 0px 50px 7px;
     -webkit-border-radius: 50px 0px 50px 0px;
