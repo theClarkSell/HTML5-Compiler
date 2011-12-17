@@ -320,8 +320,8 @@ This line will load each image into an in-memory element.
        		return function() {
          		var yPos;
             	yPos = base - height - 1;
-
-            	_ctx.drawImage(currentImage, 30, 30, barWidth, height, xPos, yPos, barWidth, height);
+				
+				_ctx.drawImage(currentImage, 30, 30, barWidth, height, xPos, yPos, barWidth, height);
             	labelBar(currentCategory, xPos, baseY);
 
             	xPos += 125;            
