@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Instructions</title>
+    
+        <script src="/scripts/jquery-1.6.2.js" type="text/javascript"></script>
+        <script src="/scripts/Markdown.Converter.js" type="text/javascript""></script>
+        
+    </head>
+
+    <body>
+        <div id="markdown">yep, we didn't code for that error.</div>
+        
+        <script>
+
+            $(document).ready( function () {
+            
+                ( function () {
+
+                    var xhr;
+
+                    if (window.XMLHttpRequest) {
+                        
+                        xhr = new XMLHttpRequest();
+                    
+                    } else if (window.ActiveXObject) {
+                    
+                        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                    
+                    }
+            
+                    function onError(e) {
+                        $('#markdown').text(e);
+                    };
+
+                    function onLoaded(e){
+                        
+                        var converter = new Markdown.Converter();
+                        var convertedMarkdown = converter.makeHtml(this.responseText);
+
+                        $('#markdown').text('');
+                        $('#markdown').append(convertedMarkdown);      
+                    };
+
+                    (function readFile() {
+                        var sUrl = "http://"
+                                     + self.location.hostname
+                                     + ":"
+                                     + self.location.port
+                                     + "/readme.md";
+
+                        xhr.open('GET', sUrl);
+                        
+                        xhr.onload = onLoaded;
+                        xhr.onerror = onError;
+
+                        xhr.send(); 
+                    })();
+                })();
+            });
+        </script>
+               
+    </body>
+</html>
