@@ -1,0 +1,14 @@
+
+.list {
+	list-style: none;
+	display: block;
+	text-align: center;
+}
+
+.drag {
+	min-height: 25px;
+	width: 200px;
+	border: 3px dashed #ccc;
+	margin: 10px;
+	padding: 10px;
+}

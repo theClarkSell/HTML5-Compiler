@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        
+        <title>JavaScript Lab | 2012 CodeMash's HTML5 Precompiler</title>
+        <meta name="author" content="Clark Sell, Brandon Satrom" />
+    
+        <!-- Demo Support -->
+        <script src="/scripts/jquery-1.6.2.js" type="text/javascript"></script>
+        <script src="/scripts/modernizr.dev-all.js" type="text/javascript"></script>
+        
+        <!-- Demo -->        
+        <link href="/style/style.css" rel="stylesheet" type="text/css" />
+        <script src="step1.js" type="text/javascript"></script>
+
+    </head>
+
+    <body>
+
+        <div id="title" style="font-weight: bold">Drag N Drop'n</div>        
+        <hr/>
+
+        <ol class="list">
+            <li class="drag" draggable = "true">Drag Me</li>
+            <li class="drag" draggable = "true">Or Drag Me</li>
+        </ol>
+        <hr/>
+        
+        <div id="results"></div>
+        <div id="errros" style="color: red;"></div>
+        
+        <script>
+
+            $(document).ready(function () {
+
+                if (Modernizr.dragandrop) {
+                    //supported
+                } else {
+                    alert('your browser does not support drag and drop');
+                }
+
+                var clear = function () {
+                    $('#results').text('');
+                };
+
+            });
+        	
+    	</script>
+    	
+    </body>
+</html>
