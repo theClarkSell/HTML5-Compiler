@@ -8,43 +8,114 @@
         <meta name="author" content="Clark Sell, Brandon Satrom" />
     
         <!-- Demo Support -->
-        <script src="/scripts/jquery-1.6.2.js" type="text/javascript"></script>
-        <script src="/scripts/modernizr.dev-all.js" type="text/javascript"></script>
+        <script src="./scripts/jquery-1.6.2.js" type="text/javascript"></script>
+        <script src="./scripts/modernizr.dev-all.js" type="text/javascript"></script>
         
         <!-- Demo -->        
-        <link href="/style/style.css" rel="stylesheet" type="text/css" />
+        <link href="./style/style.css" rel="stylesheet" type="text/css" />
         <script src="step1.js" type="text/javascript"></script>
 
     </head>
 
     <body>
 
-        <div id="title" style="font-weight: bold">Drag N Drop'n</div>        
-        <hr/>
+        <article>
+            <div id="title" style="font-weight: bold">Drag N Drop'n</div>        
+            <hr/>
+        </article>
 
-        <ol class="list">
-            <li class="drag" draggable = "true">Drag Me</li>
-            <li class="drag" draggable = "true">Or Drag Me</li>
-        </ol>
-        <hr/>
-        
-        <div id="results"></div>
-        <div id="errros" style="color: red;"></div>
-        
+        <article>
+            
+            <ol id="list">
+                <li draggable="true" data-value="data-html5_3d">
+                    <a id="one" href="#">
+                        <img src="./images/HTML5_3D_effects_128.png"/> </a></li>
+                
+                <li draggable="true">
+                    <a id="two" href="#">
+                        <img src="./images/HTML5_Connectivity_128.png"/> </a></li>
+                
+                <li draggable="true">
+                    <a id="three" href="#">
+                        <img src="./images/HTML5_Device_Access_128.png"/> </a></li>
+            </ol>
+
+            <div id="shield" draggable="true"></div>
+
+        </article>
+
         <script>
 
             $(document).ready(function () {
-
-                if (Modernizr.dragandrop) {
+                if (Modernizr.draganddrop) {
                     //supported
                 } else {
                     alert('your browser does not support drag and drop');
                 }
 
-                var clear = function () {
-                    $('#results').text('');
-                };
+                function handleDragStart(e) {
+                    console.log('in handleDragStart');
 
+                    this.style.opacity = '0.4';  // this / e.target is the source node.
+                    e.dataTransfer.effectAllowed = 'move';
+                }
+
+                function handleDragOver(e) {
+                    console.log('in handleDragOver');
+                    
+                    if (e.preventDefault) {
+                        e.preventDefault(); // Necessary. Allows us to drop.
+                    }
+
+                    e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+
+                    return false;
+                }
+
+                function handleDragEnter(e) {
+                    console.log('in handleDragEnter');
+                    
+                    $(e.target).addClass('over');
+                }
+
+                function handleDragLeave(e) {
+                    console.log('in handleDragLeave');
+                    
+                    $(e.target).removeClass('over');
+                }
+
+                function handleDrop(e) {
+                    console.log('in handleDrop');
+
+                    if (e.stopPropagation) {
+                        e.stopPropagation(); // stops the browser from redirecting.
+                    }
+
+                    $(e).hide();
+
+                    return false;
+                }
+
+                function handleDragEnd(e) {
+                    console.log('in handleDragEnd');
+                    //here I want to remove the source from view...
+                    
+                    [].forEach.call(listItems, function (item) {
+                        $(item).removeClass('over');
+                        //col.removeClassName('over');
+                    });
+                }
+
+                var listItems = document.querySelectorAll('*[draggable=true]');
+                [].forEach.call(listItems, function(item) {
+                    item.addEventListener('dragstart', handleDragStart, false);
+                    item.addEventListener('dragenter', handleDragEnter, false);
+                    item.addEventListener('dragover', handleDragOver, false);
+                    item.addEventListener('dragleave', handleDragLeave, false);
+                    item.addEventListener('drop', handleDrop, false);
+                    item.addEventListener('dragend', handleDragEnd, false);
+                });
+        
             });
         	
     	</script>

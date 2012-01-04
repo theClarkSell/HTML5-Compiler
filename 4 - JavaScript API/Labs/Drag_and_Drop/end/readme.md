@@ -1,24 +1,22 @@
 # 2012 CodeMash HTML5 Precompiler
 Contributors: Brandon Satrom, Clark Sell
 
-Tags: HTML5, JavaScript, WebSockets
+Tags: HTML5, JavaScript, Drag and Drop
 
 - - -
 ## Abstract
 
-In this lab we're going to work through building a realtime chat system using WebSockets and node.js
+In this lab we're going to work through building a simple web page utilizing HTML5 Drag and Drop
 
 - - -
 ## What will you learn?
 
 In this lab you will learn the basics for creating and consuming a WebSocket.
 
-* How to open a connection
-* How to host an endpoint 
-* How to broadcast a message across multiple clients
-* How to send a message
-
-Given the state of the WebSocket Spec we're actually going to use a library called Socket.IO to develop agaist.
+* Enabling draggable content
+* Using the dragging events 
+* DataTransfer Object
+* Dragging Files from the desktop to the browswer
 
 - - - 
 ## Prerequisites
@@ -54,16 +52,10 @@ All of the supporting libraries were actually added to the source base. All depe
 - - -
 ## Resources
 
-* W3C WebSocket Standard: 		http://dev.w3.org/html5/websockets/
-* IETF WebSocket Protocol Spec: http://tools.ietf.org/html/draft-ietf-hybi-thewebsocketprotocol-09
-* HTML5 Labs: 					http://html5labs.com, http://html5labs.interoperabilitybridges.com/prototypes/websockets/websockets/info
-* node.js:	 					http://nodejs.org/
-* Socket.IO: 					http://socket.io/
-* Pusher: 						http://pusher.com/
-* CoffeeScript: 				http://coffeescript.org/
-
-github
-
-* socket.io 		https://github.com/LearnBoost/socket.io-client
-* socket.io-client	https://github.com/LearnBoost/socket.io-client
+* W3C Drag and Drop Spec: http://dev.w3.org/html5/spec/Overview.html#dnd
+* whatwg: http://www.whatwg.org/specs/web-apps/current-work/multipage/dnd.html#dnd
+* MDN: https://developer.mozilla.org/En/DragDrop/Drag_Operations
+* HTML5 Doctor Demo: http://html5doctor.com/native-drag-and-drop/
+* Demo: http://html5demos.com/drag
+ 
 

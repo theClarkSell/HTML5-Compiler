@@ -1,14 +1,53 @@
+/* if there was selectable text of which we expected to be draggable, this would disable it */
+[draggable] {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
 
-.list {
+*[draggable=true] {
+  -moz-user-select: none;
+  cursor: move;
+}
+
+[draggable].over {
+  
+}
+
+[draggable] a {
+	cursor: move;
+}
+
+.over {
+	border: 6px dashed red;	
+}
+
+#list {
+	float: left;
 	list-style: none;
 	display: block;
 	text-align: center;
 }
 
-.drag {
-	min-height: 25px;
+#list li {
 	width: 200px;
-	border: 3px dashed #ccc;
-	margin: 10px;
+	margin: 20px;
 	padding: 10px;
+
+	border: 2px dashed #ccc;
 }
+
+#shield {
+	float: right;
+	height: 512px;
+	width: 512px;
+	padding: 10px;
+	
+	background-image: url(../images/HTML5_Black.png);
+	background-repeat: no-repeat;
+}
+
+#shield.over {
+	background-image: url(../images/HTML5_Color.png);
+}
+
