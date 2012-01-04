@@ -52,7 +52,7 @@ img {
 	width: 202px;
 	height: 202px;	
 	
-	-moz-border-radius: 50px 0px 50px 7px;
+	-moz-border-radius: 50px 0px 50px 0px;
     -webkit-border-radius: 50px 0px 50px 0px;
 	border-radius: 50px 0px 50px 0px;
 	
