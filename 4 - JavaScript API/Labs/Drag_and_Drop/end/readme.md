@@ -11,43 +11,34 @@ In this lab we're going to work through building a simple web page utilizing HTM
 - - -
 ## What will you learn?
 
-In this lab you will learn the basics for creating and consuming a WebSocket.
+In this lab you will learn the basics for creating drag able content and consuming it.
 
-* Enabling draggable content
-* Using the dragging events 
-* DataTransfer Object
-* Dragging Files from the desktop to the browswer
+* How to enable draggable content
+* How and when to use the built in drag and drop events
+* How to use the DataTransfer object
+* Dragging out of the browser
 
 - - - 
-## Prerequisites
+## Getting Started
 
 * For purposes of this lab we're going to use node.js as a stand alone server for hosting our websocket endpoints and the pages that will consume them.
-
-- - - 
-### Package Dependencies
-
-to run
-
-* socket.io			v0.8.7
-* socket.io-client 	v0.8.7
-* node-static		v0.5.9
-
-to develop
-
-* coffee-script
-* jasmine-node
-
-All of the supporting libraries were actually added to the source base. All dependiecies can be installed from our package.json.
-
->		npm install ./
 
 - - - 
 ### Step #1
 
 **Getting Setting Up**
 
+
 ### Step #2
 
+
+
+---
+### Extra Credit
+
+One of the great features you can enable with Drag and Drop is the ability to do things like interact with the desktop. If you have ever seen something like SkyDrive.com you can add files just by dragging files into the browser window. 
+
+http://www.html5rocks.com/en/tutorials/file/dndfiles/#toc-selecting-files-dnd
 
 - - -
 ## Resources

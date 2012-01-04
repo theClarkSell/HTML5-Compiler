@@ -27,29 +27,32 @@
         <article>
             
             <ol id="list">
-                <li draggable="true" data-value="data-html5_3d">
-                    <a id="one" href="#">
+                <li id="li_one" draggable="true" data-value="data-html5_3d">
+                    <a id="a_one" href="#">
                         <img src="./images/HTML5_3D_effects_128.png"/> </a></li>
                 
-                <li draggable="true">
-                    <a id="two" href="#">
+                <li id="li_two" draggable="true">
+                    <a id="a_two" href="#">
                         <img src="./images/HTML5_Connectivity_128.png"/> </a></li>
                 
-                <li draggable="true">
-                    <a id="three" href="#">
+                <li id="li_three" draggable="true">
+                    <a id="a_three" href="#">
                         <img src="./images/HTML5_Device_Access_128.png"/> </a></li>
             </ol>
 
-            <div id="shield" draggable="true"></div>
+            <div id="shield" draggable="true" data-downloadurl="
+                application/octet-stream
+                :html5.png
+                :file://localhost/Users/me/source/github/HTML5-Compiler/4%20-%20JavaScript%20API/Labs/Drag_and_Drop/end/images/HTML5_Black.png"></div>
 
         </article>
 
         <script>
 
             $(document).ready(function () {
-                if (Modernizr.draganddrop) {
-                    //supported
-                } else {
+                
+                // just for demo purposes to make sure your browser supports what we're about to do.
+                if (!Modernizr.draganddrop) {
                     alert('your browser does not support drag and drop');
                 }
 
@@ -58,6 +61,29 @@
 
                     this.style.opacity = '0.4';  // this / e.target is the source node.
                     e.dataTransfer.effectAllowed = 'move';
+
+                    e.dataTransfer.setData('Text', this.id);
+
+                    /* NOTE
+                        Depending on the browser you could use a custom format
+                            ex 'text/x-example'
+
+                        e.dataTransfer.setData('text/x-example', whatever);
+                    */
+                }
+
+                function handleDragEnter(e) {
+                    console.log('in handleDragEnter');
+                    
+                    /* 
+                        when we enter an object that is draggable we want to add a class that provides user feedback
+                        Here we are adding a class to the element. this will of course cause the browser to render the chnage.
+
+                        We want to do this here on 'dragenter' rather than 'dragover' 
+                        dragenter will fire once while dragover will continue to fire.
+                    */
+
+                    $(e.target).addClass('over');
                 }
 
                 function handleDragOver(e) {
@@ -72,38 +98,38 @@
                     return false;
                 }
 
-                function handleDragEnter(e) {
-                    console.log('in handleDragEnter');
-                    
-                    $(e.target).addClass('over');
-                }
-
                 function handleDragLeave(e) {
                     console.log('in handleDragLeave');
                     
+                    // remove our class we added while dragging
                     $(e.target).removeClass('over');
                 }
 
                 function handleDrop(e) {
-                    console.log('in handleDrop');
+                    // here we want to remove the item we dragged from view
+                    // we also want to get our thing we dropped...
 
+                    console.log('in handleDrop');
+                        
+                    // stop the browser from doing it's default action. if it we're a link it might try to invoke it
                     if (e.stopPropagation) {
-                        e.stopPropagation(); // stops the browser from redirecting.
+                        e.stopPropagation();
                     }
 
-                    $(e).hide();
+                    // let's grab some data we passed along in the move
+                    var sourceElementId = e.dataTransfer.getData('Text');
+                    $('#' + sourceElementId).hide();
+
+                    // reset our visual que
+                    $(e.target).removeClass('over');
 
                     return false;
                 }
 
                 function handleDragEnd(e) {
                     console.log('in handleDragEnd');
-                    //here I want to remove the source from view...
-                    
-                    [].forEach.call(listItems, function (item) {
-                        $(item).removeClass('over');
-                        //col.removeClassName('over');
-                    });
+
+                    // you could cook up a batch of awesome sauce here, but we didn't
                 }
 
                 var listItems = document.querySelectorAll('*[draggable=true]');
@@ -115,6 +141,26 @@
                     item.addEventListener('drop', handleDrop, false);
                     item.addEventListener('dragend', handleDragEnd, false);
                 });
+
+                var shield = document.getElementById('shield');
+                
+                function handleShieldDragStart(e) {
+                    console.log('in handleShieldDragStart');
+
+                    var fileDetails = shield.dataset.downloadurl;
+                    e.dataTransfer.setData('DownloadURL', fileDetails);
+                }
+
+                function handleShieldDragEnd(e) {
+                    console.log('in handleShieldDragEnd');
+
+                    this.style.opacity = '100'; 
+                
+                }
+
+                shield.addEventListener('dragstart', handleShieldDragStart, false);
+                shield.addEventListener('dragend', handleShieldDragEnd, false);
+
         
             });
         	
