@@ -18,7 +18,7 @@
 4. Now change modify the `img` selector to create an alternative box effect:
 
 		`-moz-border-radius: 50px 0px 50px 7px;
-   	-webkit-border-radius: 50px 0px 50px 0px;
+   		-webkit-border-radius: 50px 0px 50px 0px;
 		border-radius: 50px 0px 50px 0px;`
 	
 ### **[EXTRA CREDIT]** Add a Polyfill that creates border-radius effects for older browsers (Assumes the use of IE9 to target IE8 for testing):
@@ -51,7 +51,7 @@
 1. Open style.css and add the following to the `img` selector:
 
 		`-moz-box-shadow: 0px 0px 10px #006400;
-   	-webkit-box-shadow: 0px 0px 10px #006400;
+   		-webkit-box-shadow: 0px 0px 10px #006400;
 		box-shadow: 0px 0px 10px 1px #006400;`
 
 2. Refresh the page, and notice the shadow effect added around all of the images.
@@ -59,7 +59,7 @@
 3. Now lets add a similar effect to the overlay box that appears when you hover over an image. Find the selector `ul.thumbnails li:hover.` (Note: `hover` is a CSS pseudo-selector that allows us to apply styles to a set of elements only when an event is triggered, which creates an animation effect. But more on that later. Add the following css to the styles in that selector:
 	
 		`-moz-box-shadow: 0px 0px 20px 5px #A9A9A9;
-   	-webkit-box-shadow: 0px 0px 20px 5px #A9A9A9;
+   		-webkit-box-shadow: 0px 0px 20px 5px #A9A9A9;
 		box-shadow: 0px 0px 20px 5px #A9A9A9;`
     
 4. Refresh the page, and hover over a couple of images to view the effect. Notice the difference in the effect between the images and the hover overlay.
@@ -68,7 +68,7 @@
 
 ### III. Text Shadow
 
-1. Open style.css and add the following to the `h1` selector:
+1. Open style.css and add the following to the `h1` selector (see if you remember those vendor prefixes, and add them yourself):
 
 	`text-shadow: 5px 5px 5px #bbb;`
 
@@ -89,16 +89,16 @@
 
 2. Open "css/style.css" and create a @font-face declaration at the top of the page:
 
-	`@font-face {
-    	font-family: 'SpicyRiceRegular';
-    	src: url('../../fonts/spicyrice-regular-webfont.eot');
-    	src: url('../../fonts/spicyrice-regular-webfont.eot?#iefix') format('embedded-opentype'),
-     	     url('../../fonts/spicyrice-regular-webfont.woff') format('woff'),
-  	         url('../../fonts/spicyrice-regular-webfont.ttf') format('truetype'),
- 	         url('../../fonts/spicyrice-regular-webfont.svg#SpicyRiceRegular') format('svg');
-    	font-weight: normal;
-    	font-style: normal;
-}`
+		`@font-face {
+	    	font-family: 'SpicyRiceRegular';
+	    	src: url('../../fonts/spicyrice-regular-webfont.eot');
+	    	src: url('../../fonts/spicyrice-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	     	     url('../../fonts/spicyrice-regular-webfont.woff') format('woff'),
+	  	         url('../../fonts/spicyrice-regular-webfont.ttf') format('truetype'),
+	 	         url('../../fonts/spicyrice-regular-webfont.svg#SpicyRiceRegular') format('svg');
+	    	font-weight: normal;
+	    	font-style: normal;
+		}`
 
 3. Modify the body style declaration to use this new font family. In the `body` selector, change the `font-family` style to the following:
 
@@ -328,7 +328,7 @@ Here, we're combining a CSS3 transformation with our transition to effectively a
 
 3. Now that we've added our transition, let's view it in action. Refresh the page, and hover over an image.
 
-4. This is a nice effect, but you no-doubt notices that its not particularly smooth. To add some smoothness, we can use a transition timing function. The available options are `ease`, `linear`, `ease-in`, `ease-out`, and `ease-in-out`. We'll use `ease-in-out` and add it to the end of each transition declaration, like so:
+4. This is a nice effect, but you no-doubt notice that its not particularly smooth. To add some smoothness, we can use a transition timing function. The available options are `ease`, `linear`, `ease-in`, `ease-out`, and `ease-in-out`. We'll use `ease-in-out` and add it to the end of each transition declaration. Add the following to the 'img' selection (note, this should be the 'img' selector, not the 'img:hover' selector:
 
 		-webkit-transition: all 2s ease-in-out;
 		-moz-transition: all 2s ease-in-out;
