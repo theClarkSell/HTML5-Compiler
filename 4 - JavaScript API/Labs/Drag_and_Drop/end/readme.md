@@ -24,15 +24,15 @@ In this lab you will learn the basics for creating drag able content and consumi
 
 For purposes of this lab we're going to write everything in three different files.
 
-* ./default.html
+		./default.html
 
 this is the default markup page we will use for Drag and Drop.
 
-* ./scripts/default.js
+		./scripts/default.js
 
 this is our JavaScript file where all of our event handlers and other functions will be placed.
 
-* ./style/style.css
+		./style/style.css
 
 this is our style elements
 
@@ -45,14 +45,14 @@ To kick things off lets just run *default.html*. Right away take one of the imag
 
 1. We can make any content draggable by just adding an attribute to our DOM element
 
->	draggable="true"
+		draggable="true"
 
 2. Add the draggable attribute to the following:
 
-* each li ( three total )
-* the div element containing the shield
+* each 'li' ( three total )
+* the 'div' element containing the shield
 
-3. Now when you return to the browser, you can also drag around each <li> as well as the HTML5 Shield.
+3. Now when you return to the browser, you can also drag around each '<li>' as well as the HTML5 Shield.
 
 ### Step #2, Event Basics 
 
@@ -60,7 +60,7 @@ With our elements now draggable we need to setup our events to orchestrate dragg
 
 In this step we are going to create our basic event structure 
 
-1. Open *./scripts/default.js*
+1. Open './scripts/default.js'
 2. Take note of the fact there are already a number of shell functions of which line up to the exposed events from Drag and Drop.
 
 * dragstart
@@ -74,30 +74,30 @@ In this step we are going to create our basic event structure
 
 The CSS3 Query Selector would look like:
 
-> *[draggable=true]
+		*[draggable=true]
 
 Using it in JavaScript would look like this:
 
->	var listItems = document.querySelectorAll('*[draggable=true]');
+		var listItems = document.querySelectorAll('*[draggable=true]');
 
-4. The *listItems* collection contains all of our elements we need to add the event listeners. Now add wire up those events:
+4. The 'listItems' collection contains all of our elements we need to add the event listeners. Now add wire up those events:
 
-    [].forEach.call(listItems, function(item) {
-        item.addEventListener('dragstart', handleDragStart, false);
-        item.addEventListener('dragenter', handleDragEnter, false);
-        item.addEventListener('dragover', handleDragOver, false);
-        item.addEventListener('dragleave', handleDragLeave, false);
-        item.addEventListener('drop', handleDrop, false);
-        item.addEventListener('dragend', handleDragEnd, false);
-    });
+		[].forEach.call(listItems, function(item) {
+			item.addEventListener('dragstart', handleDragStart, false);
+        	item.addEventListener('dragenter', handleDragEnter, false);
+        	item.addEventListener('dragover', handleDragOver, false);
+        	item.addEventListener('dragleave', handleDragLeave, false);
+        	item.addEventListener('drop', handleDrop, false);
+        	item.addEventListener('dragend', handleDragEnd, false);
+    	});
 
-5. Each event handler already contained a *console.log('in here');* . This was added so you could watch the events fire in the console Window of the a browser. Return to your browser, open the console window and start to drag things around. You should see message start to appear as those events are fired.
+5. Each event handler already contained a 'console.log('in here');'. This was added so you could watch the events fire in the console Window of the a browser. Return to your browser, open the console window and start to drag things around. You should see message start to appear as those events are fired.
 
-Hover over the a drop target and notice how the *dragover* event continues to get fired? Remember this point for later.
+Hover over the a drop target and notice how the 'drag over' event continues to get fired? Remember this point for later.
 
 ### Step #3, dragstart
 
-As it sounds *dragstart* is the first event that will get fired when we start to drag something. When the user starts to drag our element we want to do three things:
+As it sounds 'dragstart' is the first event that will get fired when we start to drag something. When the user starts to drag our element we want to do three things:
 
 * set an opacity such that the user has a visual queue things are changing
 * set our desired effect
@@ -105,15 +105,15 @@ As it sounds *dragstart* is the first event that will get fired when we start to
 
 1. To set the opacity we are going to take our argument passed in from the event and set it opacity:
 
->	e.target.style.opacity = '0.4';
+		e.target.style.opacity = '0.4';
 
 2. To set the effect we are going to set a property on the dataTransfer object:
 
->	e.dataTransfer.effectAllowed = 'move';
+		e.dataTransfer.effectAllowed = 'move';
 
 3. Now we will setup some data of which will transfer along with the move. In our case we are going to send along the element ID of the thing being moved so we can query and hide it later. ( this is just for purposes of a demo )
 
->	e.dataTransfer.setData('Text', this.id);
+		e.dataTransfer.setData('Text', this.id);
 
 ### Step #3, dragenter
 ### Step #3, dragover
@@ -130,15 +130,16 @@ As it sounds *dragstart* is the first event that will get fired when we start to
 One of the great features you can enable with Drag and Drop is the ability to do things like interact with the desktop. If you have ever seen something like SkyDrive.com you can add files just by dragging files into the browser window. 
 
 
->	data-downloadurl="
+		data-downloadurl="
                 application/octet-stream
                 :html5.png
                 :[path]"
 
-where *[path]* is the path of the image. Example:
+where '[path]' is the path of the image. Example:
 
-* file:// … /HTML5-Compiler/4%20-%20JavaScript%20API/Labs/Drag_and_Drop/end/images/HTML5_Black.png
-* http://localhost:8080/images/html5_Black.png
+		file:// … /HTML5-Compiler/4%20-%20JavaScript%20API/Labs/Drag_and_Drop/end/images/HTML5_Black.png
+
+		http://localhost:8080/images/html5_Black.png
 
 References:
 
