@@ -108,11 +108,11 @@
 
 	`font-family: "SpicyRiceRegular";`
 
-4. Before refreshing your browser, turn on Network monitoring in the "Network" tab of your browser's developer tools.
+5. Before refreshing your browser, turn on Network monitoring in the "Network" tab of your browser's developer tools.
 
-5. Now, refresh the page and make sure the new font shows up. View the Network tab of your browser and note how the browser loaded the font file (.woff, .oft, etc.) behind the scenes for you.
+6. Now, refresh the page and make sure the new font shows up. View the Network tab of your browser and note how the browser loaded the font file (.woff, .oft, etc.) behind the scenes for you.
 
-6. You'll notice that our @font-face declaration includes multiple formats. Try loading the page in multiple browsers to see which browsers use which formats.
+7. You'll notice that our @font-face declaration includes multiple formats. Try loading the page in multiple browsers to see which browsers use which formats.
 
 ***Question to consider:*** If you were to serve fonts from your server to users through the browser, what information might your server need to have about fonts to enable this capability?
 
@@ -260,7 +260,7 @@ Now, refresh the page and bask in the awesome mobile-ness of it all!
 		-o-transform: translate(40px, 20px); 
 		-webkit-transform: translate(40px, 20px);
 
-Refresh the page, and hover over an image to display the overlay and reveal how far the image has moved relative to its original position.
+	Refresh the page, and hover over an image to display the overlay and reveal how far the image has moved relative to its original position.
 
 4. Comment out the translate style, and create a style declaration that skews the photos 10 degrees along the x-axis, and 5 degrees along the y-axis:
 
@@ -311,7 +311,7 @@ Refresh the page, and hover over an image to display the overlay and reveal how 
 		-o-transition: all 2s;
 		-ms-transition: all 2s;  
 
-Here, we're specifying that we want to animate all of the modified properties of an element. If we want to modify only a single property (like width, for instance) we can specify that in place of `all`. The "`2s`" string is the transition duration, in this case, two seconds.
+	Here, we're specifying that we want to animate all of the modified properties of an element. If we want to modify only a single property (like width, for instance) we can specify that in place of `all`. The "`2s`" string is the transition duration, in this case, two seconds.
 
 3. Of course, transitions by themselves are useless. To leverage their power, we need to specify both a trigger for the transition, as well as one or more properties that should change in the transition. Our trigger, in this case, will be when the user hovers over an image, and we can use the `:hover` pseudo class to define the elements to animate:
 
@@ -324,7 +324,7 @@ Here, we're specifying that we want to animate all of the modified properties of
 			z-index: 1000;
 		}
 
-Here, we're combining a CSS3 transformation with our transition to effectively animate the process of scaling (by 2) a hovered image. (and the z-index ensures that the hovered image floats to the top)
+	Here, we're combining a CSS3 transformation with our transition to effectively animate the process of scaling (by 2) a hovered image. (and the z-index ensures that the hovered image floats to the top)
 
 3. Now that we've added our transition, let's view it in action. Refresh the page, and hover over an image.
 
