@@ -41,7 +41,7 @@ this is our style elements
 
 To kick things off lets just run *default.html*. Right away take one of the images on the left of the you can actually already drag it. This is because anything with an anchor tag is actually draggable by default.
 
-** Make it draggable **
+**Make it draggable**
 
 1. We can make any content draggable by just adding an attribute to our DOM element
 
@@ -49,10 +49,10 @@ To kick things off lets just run *default.html*. Right away take one of the imag
 
 2. Add the draggable attribute to the following:
 
-* each 'li' ( three total )
-* the 'div' element containing the shield
+* each `li` ( three total )
+* the `div` element containing the shield
 
-3. Now when you return to the browser, you can also drag around each '<li>' as well as the HTML5 Shield.
+3. Now when you return to the browser, you can also drag around each `<li>` as well as the HTML5 Shield.
 
 ### Step #2, Event Basics 
 
@@ -60,7 +60,7 @@ With our elements now draggable we need to setup our events to orchestrate dragg
 
 In this step we are going to create our basic event structure 
 
-1. Open './scripts/default.js'
+1. Open `./scripts/default.js`
 2. Take note of the fact there are already a number of shell functions of which line up to the exposed events from Drag and Drop.
 
 * dragstart
@@ -80,18 +80,18 @@ Using it in JavaScript would look like this:
 
 		var listItems = document.querySelectorAll('*[draggable=true]');
 
-4. The 'listItems' collection contains all of our elements we need to add the event listeners. Now add wire up those events:
+4. The `listItems` collection contains all of our elements we need to add the event listeners. Now add wire up those events:
 
 		[].forEach.call(listItems, function(item) {
 			item.addEventListener('dragstart', handleDragStart, false);
-        	item.addEventListener('dragenter', handleDragEnter, false);
-        	item.addEventListener('dragover', handleDragOver, false);
-        	item.addEventListener('dragleave', handleDragLeave, false);
-        	item.addEventListener('drop', handleDrop, false);
-        	item.addEventListener('dragend', handleDragEnd, false);
-    	});
+			item.addEventListener('dragenter', handleDragEnter, false);
+			item.addEventListener('dragover', handleDragOver, false);
+			item.addEventListener('dragleave', handleDragLeave, false);
+			item.addEventListener('drop', handleDrop, false);
+			item.addEventListener('dragend', handleDragEnd, false);
+		});
 
-5. Each event handler already contained a 'console.log('in here');'. This was added so you could watch the events fire in the console Window of the a browser. Return to your browser, open the console window and start to drag things around. You should see message start to appear as those events are fired.
+5. Each event handler already contained a `console.log('in here');`. This was added so you could watch the events fire in the console Window of the a browser. Return to your browser, open the console window and start to drag things around. You should see message start to appear as those events are fired.
 
 Hover over the a drop target and notice how the 'drag over' event continues to get fired? Remember this point for later.
 
@@ -131,11 +131,11 @@ One of the great features you can enable with Drag and Drop is the ability to do
 
 
 		data-downloadurl="
-                application/octet-stream
-                :html5.png
-                :[path]"
+	        application/octet-stream
+	        :html5.png
+	        :[path]"
 
-where '[path]' is the path of the image. Example:
+where `[path]` is the path of the image. Example:
 
 		file:// … /HTML5-Compiler/4%20-%20JavaScript%20API/Labs/Drag_and_Drop/end/images/HTML5_Black.png
 
