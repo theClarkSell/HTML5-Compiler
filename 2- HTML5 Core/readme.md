@@ -31,19 +31,17 @@
 
 	* `#nav -> nav`
 
-	* `#footer -> footer`
-
 6. Change both of the `<div class="article">` elements to `<article>`. Open style.css and change the CSS selector reference that read ".article" to "article," without the dot (.).
 **Questions to ponder:** Why aren't we changing `<div id="blog">`? Is there an [HTML5 sectioning element](http://www.w3.org/TR/html5/sections.html#sections) that you think might work in its place? Why or why not? Why do you think the W3C chose not to specifically define a sectioning element (like `<main>` for the primary or main content of a page)?
 
-7. Change the `<h3>` tags in the article tag to `<h1>`, and talk about sectioning elements allowing you to use headers without affecting the outlining algorithm of the document.
+7. Change the `<h3>` tags in the article tag to `<h1>`. Sectioning elements (like div, span, article, section and the like) allow you to use header elements (`<h1>`, etc.) without affecting the outlining algorithm of the overall document. So you can now "legally" use `<h1>` elements in your article blocks, even though `<h1>` is already used in the main page heder.
 
-8. Add a `<header>` tag in place of each `<div class="header">` and a `<footer>` tag in place of each `<div class="footer">` for the articles on the page. Sectioning elements--like `<article>` `<section>` and the like--can have their own `<header>` and `<footer>` elements, in addition to those on the page itself. 
+8. Add a `<header>` tag in place of each `<div class="article-head">` and a `<footer>` tag in place of each `<div class="footer">` for the articles on the page. Sectioning elements--like `<article>` `<section>` and the like--can have their own `<header>` and `<footer>` elements, in addition to those on the page itself. 
 
 9. Open style.css and change the styles for `.main-head,`, `.article`, `.article-head` and `.footer` styles to match the changes you made in step #8. Don't be afraid to ask for help if you get stuck. Once you're done, refresh the page and make sure that things still look the same as before.
 
 10. Add a `<time>` element around the date in the footer of each article. Set the pubdate and datetime properties similar to the example below.
-**Question to ponder:** The `<time>` element doesn't change the look and feel of our page, so what value do you think it might have (the cryptic UTC datetime value is a hint about the "intended audience" for this element)? 
+**Question to ponder:** The `<time>` element doesn't change the look and feel of our page (except in this case because we defined a CSS style on the time selector), so what value do you think it might have (the cryptic UTC datetime value is a hint about the "intended audience" for this element)? 
 
 	`<time datetime="2011-05-18T08:15:16.001-05:00" pubdate>May 18, 2011</time>`
 
@@ -60,7 +58,7 @@
 ### **[EXTRA CREDIT]** Use a Polyfill for an older browser (In this example, we'll use IE9 to simulate IE8 behavior)
 1. 	Open the page with Internet Explorer 9 (if you haven't already), and hit the F12 key (or use the menu) to open the developer tools.
 
-	2. Click on the "Browser Mode" menu item to the right of the menu bar. You should see options similar to the image below. Select "Internet Explorer 8," or "Internet Explorer 7" and watch how the page changes.
+2. Click on the "Browser Mode" menu item to the right of the menu bar. You should see options similar to the image below. Select "Internet Explorer 8," or "Internet Explorer 7" and watch how the page changes.
 
 		![Changing the Browser Mode in IE9's F12 Developer Tools](https://github.com/csell5/HTML5-Compiler/raw/master/2-%20HTML5%20Core/labs/assets/ie9BrowserMode.png "IE9 Browser Tools")
 
@@ -137,7 +135,7 @@
 	</video>`
 
 
-**Note**: WebM is supported by Chrome and IE9 (with a plugin). Use .mp4 with IE9+ and Safari, and .ogg for Firefox of Opera.
+	**Note**: WebM is supported by Chrome and IE9 (with a plugin). Use .mp4 with IE9+ and Safari, and .ogg for Firefox of Opera.
 
 3. Open the file in a browser that supports the format you chose. Click the play button and take note of the controls offered by your browser of choice (they're not the same for all browsers).
 
@@ -207,7 +205,7 @@
 
 5. Refresh the page and interact with the Quantity field. Notice that you can use the spinner control (if the browser presents you with one) as well as manually enter the number. Try to manually entering a number greater than 10 and submit the form.
 
-4. Now take note of the deliveryDate field in your browser of choice. Try viewing the page in Chrome, IE, Firefox and Opera and take note of the differences in the Date field from one browser to the next.
+6. Now take note of the deliveryDate field in your browser of choice. Try viewing the page in Chrome, IE, Firefox and Opera and take note of the differences in the Date field from one browser to the next.
 
 ### **[EXTRA CREDIT]** Add a jQuery UI Date Picker using Modernizr
 1. Note that we already have references to jQuery, Modernizr and jQuery UI in the head of the order.html page. We'll start by using Modernizr to check for date support, so add the following to the empty `<script>` element on the page:

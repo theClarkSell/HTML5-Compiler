@@ -43,12 +43,14 @@
 
 		locate();
 
-Refresh the page and be sure to give the browser permission to use your location.
+	Refresh the page and be sure to give the browser permission to use your location.
 
 8. The API call returns a coords object with the users lat, long and other information. By itself, this information isn't very interesting, so let's use this information to place a pushpin on  a map. Start by adding the following function:
 
 		function placeLocationOnMap(latitude, longitude) {
     		var location = new Microsoft.Maps.Location(latitude, longitude);
+    		_map.setView({ zoom: 12, center: location });
+
     		// Add a pushpin to the map representing the current location
     		var pin = new Microsoft.Maps.Pushpin(location);
     		_map.entities.push(pin);
@@ -82,7 +84,7 @@ Refresh the page and be sure to give the browser permission to use your location
 
 		function displayError(msg) {
 			$('#error').text(msg);
-		sales}
+		}
 
 2. Now, let's flesh out the `showFallback()` function:
 
@@ -126,18 +128,18 @@ Refresh the page and be sure to give the browser permission to use your location
 	
 		window.onload = function() {
 			var baseY, baseX, chartWidth, salesData;
-         baseY = 375, baseX = 110, chartWidth = 475;
+         	baseY = 375, baseX = 110, chartWidth = 475;
         
 			_canvas = document.getElementById('chart'); 
 			_ctx = _canvas.getContext("2d");
 		};
 
-The `getContext` function is a special function that the Canvas API uses to retrieve an object we can use to manipulate a canvas. Currently "2d" is the only value accepted as the parameter to this function, though "3d" contexts are in the works among various vendors (WebGL, for instance).
+	The `getContext` function is a special function that the Canvas API uses to retrieve an object we can use to manipulate a canvas. Currently "2d" is the only value accepted as the parameter to this function, though "3d" contexts are in the works among various vendors (WebGL, for instance).
 
 4. Now lets add a `drawAxes` function and draw the y-axis on the canvas:
 
 		function drawAxes(baseX, baseY, chartWidth) {
-	   	var leftY, rightX;
+	   		var leftY, rightX;
         	leftY = 5;
         	rightX = baseX + chartWidth;
 
@@ -147,9 +149,9 @@ The `getContext` function is a special function that the Canvas API uses to retr
 
 	      //Draw Arrow for Y Axis
   	  		_ctx.moveTo(baseX, leftY);
-   	   _ctx.lineTo(baseX + 5, leftY + 5);
-      	_ctx.moveTo(baseX, leftY);
-		   _ctx.lineTo(baseX - 5, leftY + 5);
+   	   		_ctx.lineTo(baseX + 5, leftY + 5);
+      		_ctx.moveTo(baseX, leftY);
+			_ctx.lineTo(baseX - 5, leftY + 5);
 
         	//Define Style and stroke lines
         	_ctx.strokeStyle = "#000";
@@ -187,7 +189,7 @@ The `getContext` function is a special function that the Canvas API uses to retr
             sales: 300
         }];
 
-This is a simple Array of sales categories and figures. Typically the kind of information we'd obtain from a database or service, but you can use your imagination, here.
+	This is a simple Array of sales categories and figures. Typically the kind of information we'd obtain from a database or service, but you can use your imagination, here.
 
 9. To draw the bars on the chart, start by creating a `drawBars` function:
 
@@ -198,20 +200,20 @@ This is a simple Array of sales categories and figures. Typically the kind of in
         	xPos = baseX + 30;
 
         	for (i = 0; i < length; i++) {
-         	category = salesData[i].category;
-            sales = salesData[i].sales;
+         		category = salesData[i].category;
+            	sales = salesData[i].sales;
 
-            _ctx.fillRect(xPos, baseY - sales-1, barWidth, sales);
+            	_ctx.fillRect(xPos, baseY - sales-1, barWidth, sales);
             
-            xPos += 125;
+            	xPos += 125;
         	}        
     	}
 
-The relevant piece of this function is `_ctx.fillRect`, which creates a rectangle on the canvas at a given x (xPos) and y (baseY - sales-1) position, and with a specified width (barWidth) and height (sales).
+	The relevant piece of this function is `_ctx.fillRect`, which creates a rectangle on the canvas at a given x (xPos) and y (baseY - sales-1) position, and with a specified width (barWidth) and height (sales).
 
 10. Now add the following just after the call to `drawAxes`:
 
-		drawBars(salesData, baseX, baseY)
+		drawBars(salesData, baseX, baseY);
 
 11. Refresh the page to see your beautiful canvas chart! 
 
@@ -227,11 +229,11 @@ The relevant piece of this function is `_ctx.fillRect`, which creates a rectangl
 
         	_ctx.font = "bold 18px sans-serif";
         	_ctx.fillText("Units Sold", 10, heightOffset);
-         _ctx.fillText("(in 100s)", 17, heightOffset + 17);
-         _ctx.fillText("Product", widthOffset, height - 20);
-      }
+         	_ctx.fillText("(in 100s)", 17, heightOffset + 17);
+        	_ctx.fillText("Product", widthOffset, height - 20);
+      	}
 
-Adding text to a canvas is as simple as calling the `fillText` function with the text and the x and y coordinates on which to place the text. The `font` property is also available, and accepts anything you can use for a CSS `font` style.
+	Adding text to a canvas is as simple as calling the `fillText` function with the text and the x and y coordinates on which to place the text. The `font` property is also available, and accepts anything you can use for a CSS `font` style.
 
 2. Add a call to `labelAxes()` just after the call to `drawBars`:
 
@@ -246,9 +248,9 @@ Adding text to a canvas is as simple as calling the `fillText` function with the
 	    	_ctx.fillText(category, xPos - (category.length/2 - 10), baseY + 20);
 		}
 
-Similar to step #2, we call `fillText`, this time using the category name from our data object for the label.
+	Similar to step #2, we call `fillText`, this time using the category name from our data object for the label.
 
-5. To call `labelBar`, add the following just before the last line of the `drawBars` function:
+5. To call `labelBar`, add the following just before the last line of the `for` loop in the `drawBars` function:
 
 		labelBar(category, xPos, baseY);
 
@@ -269,7 +271,7 @@ Similar to step #2, we call `fillText`, this time using the category name from o
 4. It's also possible to use both linear and radial gradients in shapes on a canvas, so let's replace these basic colors with a fancy gradient. Start by adding `createGradient` function:
 
 		function createGradient(x, y, width, color) {
-      	var gradient;
+      		var gradient;
 
         	gradient = _ctx.createLinearGradient(x, y, x+width, y);
         	gradient.addColorStop(0, color);
@@ -278,9 +280,9 @@ Similar to step #2, we call `fillText`, this time using the category name from o
         	return gradient;
     	}
 
-This simple function accepts some information about where the shape will be rendered on the screen and a primary color and, using that information, calls the `createLinearGradient` function to obtain a gradient object. We then add two color stops (the first with our primary color and the second with a shade of grey) before returning the gradient object.
+	This simple function accepts some information about where the shape will be rendered on the screen and a primary color and, using that information, calls the `createLinearGradient` function to obtain a gradient object. We then add two color stops (the first with our primary color and the second with a shade of grey) before returning the gradient object.
 
-5. Now that we have a gradient function we can use it by replacing the existing call to `fillStyle` in the `drawBars` function with the following:
+5. Now that we have a gradient function we can use it by adding a call to `fillStyle` in the `drawBars` function, just before the call to `_ctx.fillRect`:
 
 		_ctx.fillStyle = createGradient(xPos, baseY - sales-1, barWidth, colors[i % length]);
 
@@ -306,15 +308,15 @@ This simple function accepts some information about where the shape will be rend
          	}
     	}
 
-Similar to our `drawBars` function, this function will loop through the collection of categories. in this case, however, we're defining a new DOM Image element to be added to our Canvas.
+	Similar to our `drawBars` function, this function will loop through the collection of categories. in this case, however, we're defining a new DOM Image element to be added to our Canvas.
 
-3. Set the source of each `img` element by adding the following at the end of the `for` loop:
+3. Set the source of each `img` element by adding the following just before the end of the `for` loop:
 
 		img.src = "../assets/" + category + ".jpg";
 
-This line will load each image into an in-memory element.
+	This line will load each image into an in-memory element.
 
-4. Once each image is loaded, we can use it on our canvas. To make sure we don't attempt to access the image until after it's been fully loaded, we'll add the following to the image `onload` event:
+4. Once each image is loaded, we can use it on our canvas. To make sure we don't attempt to access the image until after it's been fully loaded, we'll add the following to the image `onload` event, just before our call to `img.src`:
 
 		img.onload = (function(height, base, currentImage, currentCategory) {
        		return function() {
@@ -328,7 +330,7 @@ This line will load each image into an in-memory element.
           	}
        	})(sales, baseY, img, category);
 
-There's some JavaScript closure trickery here that we need to ensure that the onload event obtains the correct values for sales, baseY, img and category when it fires. Beyond that, the relevant piece of information is the call to `drawImage`, which takes a DOM Image element and performs a manipulation or translation of the image before rendering it to the screen. `drawImage` has several overloads, with the one above being the most complex as it both crops and resizes the image to match the dimensions of our bars before drawing them to the screen. See the resources below for more information about the `drawImage` function.
+	There's some JavaScript closure trickery here that we need to ensure that the onload event obtains the correct values for sales, baseY, img and category when it fires. Beyond that, the relevant piece of information is the call to `drawImage`, which takes a DOM Image element and performs a manipulation or translation of the image before rendering it to the screen. `drawImage` has several overloads, with the one above being the most complex as it both crops and resizes the image to match the dimensions of our bars before drawing them to the screen. See the resources below for more information about the `drawImage` function.
 
 5. Now let's add a call to 	`drawImages` just before the call to `labelAxes`:
 
@@ -360,7 +362,7 @@ There's some JavaScript closure trickery here that we need to ensure that the on
 		window.localStorage.webSite = $('#orderWebsite').val();
 		window.localStorage.phone = $('#orderTelephone').val();
 		window.localStorage.delivery = $('#deliveryDate').val();
-		window.localStorage.address = $('#orderShipping).val();
+		window.localStorage.address = $('#orderShipping').val();
 		window.localStorage.quantity = $('#orderQty').val();
 		$('#saveForLater').val('Saved!');
 
@@ -368,7 +370,7 @@ There's some JavaScript closure trickery here that we need to ensure that the on
 
 5. Open up the developer tools in your browser and inspect the local storage. Some browsers have a visual inspector, but all browsers allow you to open the console tab and type `window.localStorage` to see the contents of the object. Do so and make sure that your data has been saved.
 
-6. Refresh the page. The fields are blank, so lets use the information in local storage to re-populate these when the user returns to the page:
+6. Refresh the page. The fields are blank, so lets use the information in local storage to re-populate these when the user returns to the page. Place the following outside of the `$('#saveForLater')` function in step #2:
 	
 		$('#orderName').val(window.localStorage.name);
 		$('#orderEmail').val(window.localStorage.email);
@@ -382,14 +384,14 @@ There's some JavaScript closure trickery here that we need to ensure that the on
 
 ### II. Session Storage
 
-1. Where Local Storage is persistent, Session Storage only lasts for the user's current session (for instance, in a single tab). Let's see how this works by adding a Session variable that displays to the user the time the order was initiated. Add the following to js/storage.js:
+1. Where Local Storage is persistent, Session Storage only lasts for the user's current session (for instance, in a single tab). Let's see how this works by adding a Session variable that displays to the user the time the order was initiated. Add the following to the end of js/storage.js:
 
 		if (!window.sessionStorage.orderStamp) {
 			window.sessionStorage.orderStamp = formatDate(new Date());
 		}
 		$('#time').text("Order initiated on: " + window.sessionStorage.orderStamp);
 
-Note that `sessionStorage` is accessed similarly to local storage, and its properties can also be accessed in expando fashion.
+	Note that `sessionStorage` is accessed similarly to local storage, and its properties can also be accessed in expando fashion.
 
 2. Refresh the page, and take note of the timestamp on the form. Refresh the page several times, and notice that the timestamp does not change.
 

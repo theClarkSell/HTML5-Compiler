@@ -18,7 +18,7 @@
 4. Now change modify the `img` selector to create an alternative box effect:
 
 		`-moz-border-radius: 50px 0px 50px 7px;
-   	-webkit-border-radius: 50px 0px 50px 0px;
+   		-webkit-border-radius: 50px 0px 50px 0px;
 		border-radius: 50px 0px 50px 0px;`
 	
 ### **[EXTRA CREDIT]** Add a Polyfill that creates border-radius effects for older browsers (Assumes the use of IE9 to target IE8 for testing):
@@ -51,7 +51,7 @@
 1. Open style.css and add the following to the `img` selector:
 
 		`-moz-box-shadow: 0px 0px 10px #006400;
-   	-webkit-box-shadow: 0px 0px 10px #006400;
+   		-webkit-box-shadow: 0px 0px 10px #006400;
 		box-shadow: 0px 0px 10px 1px #006400;`
 
 2. Refresh the page, and notice the shadow effect added around all of the images.
@@ -59,7 +59,7 @@
 3. Now lets add a similar effect to the overlay box that appears when you hover over an image. Find the selector `ul.thumbnails li:hover.` (Note: `hover` is a CSS pseudo-selector that allows us to apply styles to a set of elements only when an event is triggered, which creates an animation effect. But more on that later. Add the following css to the styles in that selector:
 	
 		`-moz-box-shadow: 0px 0px 20px 5px #A9A9A9;
-   	-webkit-box-shadow: 0px 0px 20px 5px #A9A9A9;
+   		-webkit-box-shadow: 0px 0px 20px 5px #A9A9A9;
 		box-shadow: 0px 0px 20px 5px #A9A9A9;`
     
 4. Refresh the page, and hover over a couple of images to view the effect. Notice the difference in the effect between the images and the hover overlay.
@@ -68,7 +68,7 @@
 
 ### III. Text Shadow
 
-1. Open style.css and add the following to the `h1` selector:
+1. Open style.css and add the following to the `h1` selector (see if you remember those vendor prefixes, and add them yourself):
 
 	`text-shadow: 5px 5px 5px #bbb;`
 
@@ -89,16 +89,16 @@
 
 2. Open "css/style.css" and create a @font-face declaration at the top of the page:
 
-	`@font-face {
-    	font-family: 'SpicyRiceRegular';
-    	src: url('../../fonts/spicyrice-regular-webfont.eot');
-    	src: url('../../fonts/spicyrice-regular-webfont.eot?#iefix') format('embedded-opentype'),
-     	     url('../../fonts/spicyrice-regular-webfont.woff') format('woff'),
-  	         url('../../fonts/spicyrice-regular-webfont.ttf') format('truetype'),
- 	         url('../../fonts/spicyrice-regular-webfont.svg#SpicyRiceRegular') format('svg');
-    	font-weight: normal;
-    	font-style: normal;
-}`
+		`@font-face {
+	    	font-family: 'SpicyRiceRegular';
+	    	src: url('../../fonts/spicyrice-regular-webfont.eot');
+	    	src: url('../../fonts/spicyrice-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	     	     url('../../fonts/spicyrice-regular-webfont.woff') format('woff'),
+	  	         url('../../fonts/spicyrice-regular-webfont.ttf') format('truetype'),
+	 	         url('../../fonts/spicyrice-regular-webfont.svg#SpicyRiceRegular') format('svg');
+	    	font-weight: normal;
+	    	font-style: normal;
+		}`
 
 3. Modify the body style declaration to use this new font family. In the `body` selector, change the `font-family` style to the following:
 
@@ -108,11 +108,11 @@
 
 	`font-family: "SpicyRiceRegular";`
 
-4. Before refreshing your browser, turn on Network monitoring in the "Network" tab of your browser's developer tools.
+5. Before refreshing your browser, turn on Network monitoring in the "Network" tab of your browser's developer tools.
 
-5. Now, refresh the page and make sure the new font shows up. View the Network tab of your browser and note how the browser loaded the font file (.woff, .oft, etc.) behind the scenes for you.
+6. Now, refresh the page and make sure the new font shows up. View the Network tab of your browser and note how the browser loaded the font file (.woff, .oft, etc.) behind the scenes for you.
 
-6. You'll notice that our @font-face declaration includes multiple formats. Try loading the page in multiple browsers to see which browsers use which formats.
+7. You'll notice that our @font-face declaration includes multiple formats. Try loading the page in multiple browsers to see which browsers use which formats.
 
 ***Question to consider:*** If you were to serve fonts from your server to users through the browser, what information might your server need to have about fonts to enable this capability?
 
@@ -260,7 +260,7 @@ Now, refresh the page and bask in the awesome mobile-ness of it all!
 		-o-transform: translate(40px, 20px); 
 		-webkit-transform: translate(40px, 20px);
 
-Refresh the page, and hover over an image to display the overlay and reveal how far the image has moved relative to its original position.
+	Refresh the page, and hover over an image to display the overlay and reveal how far the image has moved relative to its original position.
 
 4. Comment out the translate style, and create a style declaration that skews the photos 10 degrees along the x-axis, and 5 degrees along the y-axis:
 
@@ -311,7 +311,7 @@ Refresh the page, and hover over an image to display the overlay and reveal how 
 		-o-transition: all 2s;
 		-ms-transition: all 2s;  
 
-Here, we're specifying that we want to animate all of the modified properties of an element. If we want to modify only a single property (like width, for instance) we can specify that in place of `all`. The "`2s`" string is the transition duration, in this case, two seconds.
+	Here, we're specifying that we want to animate all of the modified properties of an element. If we want to modify only a single property (like width, for instance) we can specify that in place of `all`. The "`2s`" string is the transition duration, in this case, two seconds.
 
 3. Of course, transitions by themselves are useless. To leverage their power, we need to specify both a trigger for the transition, as well as one or more properties that should change in the transition. Our trigger, in this case, will be when the user hovers over an image, and we can use the `:hover` pseudo class to define the elements to animate:
 
@@ -324,11 +324,11 @@ Here, we're specifying that we want to animate all of the modified properties of
 			z-index: 1000;
 		}
 
-Here, we're combining a CSS3 transformation with our transition to effectively animate the process of scaling (by 2) a hovered image. (and the z-index ensures that the hovered image floats to the top)
+	Here, we're combining a CSS3 transformation with our transition to effectively animate the process of scaling (by 2) a hovered image. (and the z-index ensures that the hovered image floats to the top)
 
 3. Now that we've added our transition, let's view it in action. Refresh the page, and hover over an image.
 
-4. This is a nice effect, but you no-doubt notices that its not particularly smooth. To add some smoothness, we can use a transition timing function. The available options are `ease`, `linear`, `ease-in`, `ease-out`, and `ease-in-out`. We'll use `ease-in-out` and add it to the end of each transition declaration, like so:
+4. This is a nice effect, but you no-doubt notice that its not particularly smooth. To add some smoothness, we can use a transition timing function. The available options are `ease`, `linear`, `ease-in`, `ease-out`, and `ease-in-out`. We'll use `ease-in-out` and add it to the end of each transition declaration. Add the following to the 'img' selection (note, this should be the 'img' selector, not the 'img:hover' selector:
 
 		-webkit-transition: all 2s ease-in-out;
 		-moz-transition: all 2s ease-in-out;
