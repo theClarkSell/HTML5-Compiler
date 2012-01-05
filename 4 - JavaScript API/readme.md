@@ -43,7 +43,7 @@
 
 		locate();
 
-Refresh the page and be sure to give the browser permission to use your location.
+	Refresh the page and be sure to give the browser permission to use your location.
 
 8. The API call returns a coords object with the users lat, long and other information. By itself, this information isn't very interesting, so let's use this information to place a pushpin on  a map. Start by adding the following function:
 
@@ -134,7 +134,7 @@ Refresh the page and be sure to give the browser permission to use your location
 			_ctx = _canvas.getContext("2d");
 		};
 
-The `getContext` function is a special function that the Canvas API uses to retrieve an object we can use to manipulate a canvas. Currently "2d" is the only value accepted as the parameter to this function, though "3d" contexts are in the works among various vendors (WebGL, for instance).
+	The `getContext` function is a special function that the Canvas API uses to retrieve an object we can use to manipulate a canvas. Currently "2d" is the only value accepted as the parameter to this function, though "3d" contexts are in the works among various vendors (WebGL, for instance).
 
 4. Now lets add a `drawAxes` function and draw the y-axis on the canvas:
 
@@ -189,7 +189,7 @@ The `getContext` function is a special function that the Canvas API uses to retr
             sales: 300
         }];
 
-This is a simple Array of sales categories and figures. Typically the kind of information we'd obtain from a database or service, but you can use your imagination, here.
+	This is a simple Array of sales categories and figures. Typically the kind of information we'd obtain from a database or service, but you can use your imagination, here.
 
 9. To draw the bars on the chart, start by creating a `drawBars` function:
 
@@ -209,7 +209,7 @@ This is a simple Array of sales categories and figures. Typically the kind of in
         	}        
     	}
 
-The relevant piece of this function is `_ctx.fillRect`, which creates a rectangle on the canvas at a given x (xPos) and y (baseY - sales-1) position, and with a specified width (barWidth) and height (sales).
+	The relevant piece of this function is `_ctx.fillRect`, which creates a rectangle on the canvas at a given x (xPos) and y (baseY - sales-1) position, and with a specified width (barWidth) and height (sales).
 
 10. Now add the following just after the call to `drawAxes`:
 
@@ -233,7 +233,7 @@ The relevant piece of this function is `_ctx.fillRect`, which creates a rectangl
         	_ctx.fillText("Product", widthOffset, height - 20);
       	}
 
-Adding text to a canvas is as simple as calling the `fillText` function with the text and the x and y coordinates on which to place the text. The `font` property is also available, and accepts anything you can use for a CSS `font` style.
+	Adding text to a canvas is as simple as calling the `fillText` function with the text and the x and y coordinates on which to place the text. The `font` property is also available, and accepts anything you can use for a CSS `font` style.
 
 2. Add a call to `labelAxes()` just after the call to `drawBars`:
 
@@ -248,7 +248,7 @@ Adding text to a canvas is as simple as calling the `fillText` function with the
 	    	_ctx.fillText(category, xPos - (category.length/2 - 10), baseY + 20);
 		}
 
-Similar to step #2, we call `fillText`, this time using the category name from our data object for the label.
+	Similar to step #2, we call `fillText`, this time using the category name from our data object for the label.
 
 5. To call `labelBar`, add the following just before the last line of the `for` loop in the `drawBars` function:
 
@@ -280,7 +280,7 @@ Similar to step #2, we call `fillText`, this time using the category name from o
         	return gradient;
     	}
 
-This simple function accepts some information about where the shape will be rendered on the screen and a primary color and, using that information, calls the `createLinearGradient` function to obtain a gradient object. We then add two color stops (the first with our primary color and the second with a shade of grey) before returning the gradient object.
+	This simple function accepts some information about where the shape will be rendered on the screen and a primary color and, using that information, calls the `createLinearGradient` function to obtain a gradient object. We then add two color stops (the first with our primary color and the second with a shade of grey) before returning the gradient object.
 
 5. Now that we have a gradient function we can use it by adding a call to `fillStyle` in the `drawBars` function, just before the call to `_ctx.fillRect`:
 
@@ -391,7 +391,7 @@ This simple function accepts some information about where the shape will be rend
 		}
 		$('#time').text("Order initiated on: " + window.sessionStorage.orderStamp);
 
-Note that `sessionStorage` is accessed similarly to local storage, and its properties can also be accessed in expando fashion.
+	Note that `sessionStorage` is accessed similarly to local storage, and its properties can also be accessed in expando fashion.
 
 2. Refresh the page, and take note of the timestamp on the form. Refresh the page several times, and notice that the timestamp does not change.
 
