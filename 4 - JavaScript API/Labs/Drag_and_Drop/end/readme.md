@@ -116,6 +116,48 @@ As it sounds 'dragstart' is the first event that will get fired when we start to
 		e.dataTransfer.setData('Text', this.id);
 
 ### Step #3, dragenter
+
+As it sounds `dragenter` is the event that fires right when your mouse cursor passes into the draggable element.
+
+For purposes of this, what we want to do is add a new css class to the element we entered. This css class will show the user that it's a valid target to drop over.
+
+		e.target.classList.add('over');
+
+Now we need to add that class to our `./style/style.css`.
+
+		.over {
+			border: 6px dashed red;	
+		}
+
+**note** The `dragenter` event is correct event to do things like adding css classes to an element, rather than something like `dragover`. This is because `dragenter` will only fire once where `dragover` will continue to fire. Doing so will force the browser to only re-render the change once rather than over and over.
+
+### Step #3, Since on on the subject of CSS
+
+In the last set we introduced some new style, let's take the opportunity to change a few other things. As we already know any element can be draggable, but some elements already have some default behavior. Let's use a CSS3 selector and select all draggable elements and set the user select to none.
+
+1. Open `./style/style.css`
+2. Add the following CSS:
+
+		[draggable] {
+  			-moz-user-select: none;
+  			-webkit-user-select: none;
+  			user-select: none;
+		}
+
+3. Now lets select all `draggable` elements set to `true`, and set default cursor to `move`.
+
+		*[draggable=true] {
+  			cursor: move;
+		}
+
+4. Some elements are draggable by default. Here lets query for anchor tags and change it's cursor.
+
+		[draggable] a {
+			cursor: move;
+		}
+
+**note** we are doing some CSS3 things here for the purposes of learning. There might be a better way to structure your CSS such that your not querying the same thing different times.
+
 ### Step #3, dragover
 ### Step #3, dragleave
 ### Step #3, drop
