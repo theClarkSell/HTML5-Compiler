@@ -58,7 +58,7 @@
 ### **[EXTRA CREDIT]** Use a Polyfill for an older browser (In this example, we'll use IE9 to simulate IE8 behavior)
 1. 	Open the page with Internet Explorer 9 (if you haven't already), and hit the F12 key (or use the menu) to open the developer tools.
 
-	2. Click on the "Browser Mode" menu item to the right of the menu bar. You should see options similar to the image below. Select "Internet Explorer 8," or "Internet Explorer 7" and watch how the page changes.
+2. Click on the "Browser Mode" menu item to the right of the menu bar. You should see options similar to the image below. Select "Internet Explorer 8," or "Internet Explorer 7" and watch how the page changes.
 
 		![Changing the Browser Mode in IE9's F12 Developer Tools](https://github.com/csell5/HTML5-Compiler/raw/master/2-%20HTML5%20Core/labs/assets/ie9BrowserMode.png "IE9 Browser Tools")
 
@@ -135,7 +135,7 @@
 	</video>`
 
 
-**Note**: WebM is supported by Chrome and IE9 (with a plugin). Use .mp4 with IE9+ and Safari, and .ogg for Firefox of Opera.
+	**Note**: WebM is supported by Chrome and IE9 (with a plugin). Use .mp4 with IE9+ and Safari, and .ogg for Firefox of Opera.
 
 3. Open the file in a browser that supports the format you chose. Click the play button and take note of the controls offered by your browser of choice (they're not the same for all browsers).
 
@@ -205,7 +205,7 @@
 
 5. Refresh the page and interact with the Quantity field. Notice that you can use the spinner control (if the browser presents you with one) as well as manually enter the number. Try to manually entering a number greater than 10 and submit the form.
 
-4. Now take note of the deliveryDate field in your browser of choice. Try viewing the page in Chrome, IE, Firefox and Opera and take note of the differences in the Date field from one browser to the next.
+6. Now take note of the deliveryDate field in your browser of choice. Try viewing the page in Chrome, IE, Firefox and Opera and take note of the differences in the Date field from one browser to the next.
 
 ### **[EXTRA CREDIT]** Add a jQuery UI Date Picker using Modernizr
 1. Note that we already have references to jQuery, Modernizr and jQuery UI in the head of the order.html page. We'll start by using Modernizr to check for date support, so add the following to the empty `<script>` element on the page:
