@@ -5,13 +5,9 @@
   user-select: none;
 }
 
+/* select the draggable elements and change their default cursor */
 *[draggable=true] {
-  -moz-user-select: none;
   cursor: move;
-}
-
-[draggable].over {
-  
 }
 
 [draggable] a {

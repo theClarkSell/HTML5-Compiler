@@ -17,11 +17,14 @@ In this lab you will learn the basics for creating drag able content and consumi
 * How and when to use the built in drag and drop events
 * How to use the DataTransfer object
 * Dragging out of the browser
+* Drag Effects
 
 - - - 
 ## Getting Started
 
-* For purposes of this lab we're going to use node.js as a stand alone server for hosting our websocket endpoints and the pages that will consume them.
+* For purposes of this lab we're going to write everything in three different files.
+
+
 
 - - - 
 ### Step #1
