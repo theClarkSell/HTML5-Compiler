@@ -1,24 +1,47 @@
 (function () {
 
-    /* 
+    /* ----- */
 
-        Select by an ID
-        Select by a Complex CSS Selector
+    document.getElementById('buttonElement').addEventListener('click', handleButtonClick, false);
+    document.getElementById('buttonElement').addEventListener('click', handleButtonClick2, false);
 
-        Bind to an event, Click, Change
+    function handleButtonClick(evt) {
+        console.log('handleButtonClick Called');
+        
+        var items = document.querySelectorAll('li');
+        
+        [].forEach.call(items, function(item) {
+            item.classList.add('addBorder');
+        });
+    };
+  
+    /* ----- */
 
-        Add\Remove a CSS Class
-    
-        add and remove css class
-        classList.add('over');
-       
-        var sourceElement = document.getElementById(sourceElementId);
-        sourceElement.style.display = 'none';
-        var listItems = document.querySelectorAll('*[draggable=true]');
-        shield.addEventListener('dragend', handleShieldDragEnd, false);
-   
+    function handleButtonClick2(evt) {
 
-        http://www.456bereastreet.com/archive/200601/css_3_selectors_explained/
-    */
+        var anchorItems = document.querySelectorAll('*[data-something=true]');
+         
+        [].forEach.call(anchorItems, function(item) {
+            
+            var p = document.createElement('p');
+            p.textContent = item.id;
+
+            messageElement.appendChild(p);        
+        });
+
+    };
+
+    /* ----- */
+
+    var messageElement = document.getElementById('messages');
+
+    var inputElement = document.getElementById('inputElement');
+    inputElement.addEventListener('change', handleInputElementChanged, false);
+
+    function handleInputElementChanged(evt) {
+        console.log('handleInputElementChanged Called');
+
+        messageElement.textContent = 'handleInputElementChanged Called';
+    };
 
 }).call(this);
