@@ -18,7 +18,8 @@
     /* ----- */
 
     function handleButtonClick2(evt) {
-
+        console.log('in handleButtonClick2');
+        
         var anchorItems = document.querySelectorAll('*[data-something=true]');
          
         [].forEach.call(anchorItems, function(item) {
@@ -35,7 +36,8 @@
 
     var messageElement = document.getElementById('messages');
 
-    var inputElement = document.getElementById('inputElement');
+    //var inputElement = document.getElementById('inputElement');
+    var inputElement = document.querySelector('input');
     inputElement.addEventListener('change', handleInputElementChanged, false);
 
     function handleInputElementChanged(evt) {
