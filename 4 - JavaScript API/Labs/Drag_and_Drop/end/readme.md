@@ -63,12 +63,12 @@ In this step we are going to create our basic event structure
 1. Open `./scripts/default.js`
 2. Take note of the fact there are already a number of shell functions of which line up to the exposed events from Drag and Drop.
 
-* dragstart
-* dragenter
-* dragover
-* dragleave
-* dragdrop
-* dragend
+	* dragstart
+	* dragenter
+	* dragover
+	* dragleave
+	* dragdrop
+	* dragend
 
 3. With our functions in place we need to align our events to each of the DOM elements we expect to have an event. For this we will use the new DOM Query Selector and just select all elements which are draggable.
 
@@ -99,9 +99,9 @@ Hover over the a drop target and notice how the 'drag over' event continues to g
 
 As it sounds 'dragstart' is the first event that will get fired when we start to drag something. When the user starts to drag our element we want to do three things:
 
-* set an opacity such that the user has a visual queue things are changing
-* set our desired effect
-* setup some data that will travel along when the object moves.
+	* set an opacity such that the user has a visual queue things are changing
+	* set our desired effect
+	* setup some data that will travel along when the object moves.
 
 1. To set the opacity we are going to take our argument passed in from the event and set it opacity:
 
@@ -159,33 +159,106 @@ In the last set we introduced some new style, let's take the opportunity to chan
 **note** we are doing some CSS3 things here for the purposes of learning. There might be a better way to structure your CSS such that your not querying the same thing different times.
 
 ### Step #3, dragover
+
+The `dragover` event is called repetitively as the users mouse cursor is over a draggable element. For purposes of this demo, we are just going to prevent the default browser behavior and set the `dropEffect`.
+
+1. Stop the default behavior:
+
+		if (e.preventDefault) {
+			e.preventDefault();
+		}
+
+2. Set the correct drop effect on the dataTransfer object.
+
+        e.dataTransfer.dropEffect = 'move';
+
+3. Return false.
+
+        return false;
+
 ### Step #3, dragleave
+
+Just like `dragenter`, `dragleave` is the opposite event. Fired when the cursor leaves the element.
+
+In our case we want to remove the actions we applied when we entered the object. ie. remove the css class.
+
+1. Remove our `.over` class from our style
+
+		e.target.classList.remove('over');
+
 ### Step #3, drop
+
+The drop event is the action where 
+
+1. Like a few of the other events we need to stop the browsers default action:
+
+		if (e.stopPropagation) {
+			e.stopPropagation();
+		}
+
+2. If you will recall on `dragenter` we set some data to pass across during the move. This data was the id of our source element. Our "drop" action will be to take that element and remove it from it's view. So we will need to grab that data off the dataTransfer object and do something with it. 
+
+        var sourceElementId = e.dataTransfer.getData('Text');
+        var sourceElement = document.getElementById(sourceElementId);
+		sourceElement.style.display = 'none';
+
+3. Once the drop is complete we will need to remove the `.over` class from the style, signaling to the user the drop was complete.
+
+		e.target.classList.remove('over');	
+
+4. The return false;
+
+		return false;
+
 ### Step #3, dragend
 
-
-
+We didn't utilize this event during this lab.
 
 ---
 ## Extra Credit
 
-One of the great features you can enable with Drag and Drop is the ability to do things like interact with the desktop. If you have ever seen something like SkyDrive.com you can add files just by dragging files into the browser window. 
+One of the great features you can enable with Drag and Drop and File Access is the ability to do things like interact with the users desktop. If you have ever seen something like, Gmail or SkyDrive.com you can move files just by dragging them into the context of the browser window.
 
+Let's enable dragging the shield onto the desktop, therefor saving it.
+
+1. For purposes of this demo we're going to add a custom `data-` attribute. We're going to cheat here and add hardcode our url of the object here. Let's add the attribute `data-downloadurl` to the `div` containing the HTML5 Shield. 
 
 		data-downloadurl="
 	        application/octet-stream
 	        :html5.png
 	        :[path]"
 
-where `[path]` is the path of the image. Example:
+		where `[path]` is the path of the image. Example:
 
-		file:// … /HTML5-Compiler/4%20-%20JavaScript%20API/Labs/Drag_and_Drop/end/images/HTML5_Black.png
+		* file:// … /HTML5-Compiler/4%20-%20JavaScript%20API/Labs/Drag_and_Drop/end/images/HTML5_Black.png
+		* http://localhost:8080/images/html5_Black.png
 
-		http://localhost:8080/images/html5_Black.png
+2. With the attribute now added, we need to wire up two events. 
 
-References:
+* 	handleShieldDragStart
+*	handleShieldDragEnd
 
-* http://www.html5rocks.com/en/tutorials/file/dndfiles/#toc-selecting-files-dnd
+		var shield = document.getElementById('shield');
+		
+		shield.addEventListener('dragstart', handleShieldDragStart, false);
+		shield.addEventListener('dragend', handleShieldDragEnd, false);
+
+3. In handleShieldDragStart we need to set our effect and setup our dataTransferObject.
+
+To set the effect this time, we will use `copy` rather than `move`, since we are copying the file to somewhere.
+
+		e.dataTransfer.effectAllowed = 'copy';
+
+Next let's set the dataTransfer object. This time we will need to grab the data from our custom attribute and set it on the dataTransfer object as the 'DownloadURL'.
+
+		var fileDetails = shield.dataset.downloadurl;
+		e.dataTransfer.setData('DownloadURL', fileDetails);
+
+4. In `drag end` we want to reset our opacity that was set from the original `dragenter` event.
+
+		e.target.style.opacity = '100';
+
+5. Return to the browser and drag the shield somewhere. You should notice a few different visual interactions and your the shield should get copied to the location you dragged it to.
 
 - - -
 ## Resources
@@ -195,5 +268,6 @@ References:
 * MDN: https://developer.mozilla.org/En/DragDrop/Drag_Operations
 * HTML5 Doctor Demo: http://html5doctor.com/native-drag-and-drop/
 * Demo: http://html5demos.com/drag
+* HTML5 Rocks, Draggin Files: http://www.html5rocks.com/en/tutorials/file/dndfiles/#toc-selecting-files-dnd
  
 
