@@ -29,11 +29,13 @@
         io.sockets.emit('message', userName + ' has entered chat');
       }
     };
+    
     socket.on('echo', function(message) {
       util.puts('>> echo called: ' + message);
-      checkForName(message);
-      socket.send(message);
+      //checkForName(message);
+      socket.send('echo': + message);
     });
+    
     socket.on('message', function(message) {
       var chatMessage;
       util.puts('>> message called: ' + message);
