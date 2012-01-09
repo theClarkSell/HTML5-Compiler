@@ -143,6 +143,6 @@ http://www.456bereastreet.com/archive/200601/css_3_selectors_explained/
 ---
 ## Resources
 
-* W3C XHR Spec: http://www.w3.org/TR/selectors-api/
+* W3C Selectors Spec: http://www.w3.org/TR/selectors-api/
 * CSS3 Selectors Spec: http://www.w3.org/TR/selectors/
 * CSS3 Selectors Explained: http://www.456bereastreet.com/archive/200601/css_3_selectors_explained/

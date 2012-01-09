@@ -236,16 +236,16 @@ Play around with creating your own custom events sending things back and forth f
 - - -
 ## Resources
 
-* W3C WebSocket Standard: 		http://dev.w3.org/html5/websockets/
+* W3C WebSocket Standard: http://dev.w3.org/html5/websockets/
 * IETF WebSocket Protocol Spec: http://tools.ietf.org/html/draft-ietf-hybi-thewebsocketprotocol-09
-* HTML5 Labs: 					http://html5labs.com, http://html5labs.interoperabilitybridges.com/prototypes/websockets/websockets/info
-* node.js:	 					http://nodejs.org/
-* Socket.IO: 					http://socket.io/
-* Pusher: 						http://pusher.com/
-* CoffeeScript: 				http://coffeescript.org/
+* HTML5 Labs: http://html5labs.com, http://html5labs.interoperabilitybridges.com/prototypes/websockets/websockets/info
+* node.js: http://nodejs.org/
+* Socket.IO: http://socket.io/
+* Pusher: http://pusher.com/
+* CoffeeScript: http://coffeescript.org/
 
 github
 
-* socket.io 		https://github.com/LearnBoost/socket.io-client
-* socket.io-client	https://github.com/LearnBoost/socket.io-client
+* socket.io: https://github.com/LearnBoost/socket.io-client
+* socket.io-client: https://github.com/LearnBoost/socket.io-client
 
