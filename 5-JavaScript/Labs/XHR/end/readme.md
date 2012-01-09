@@ -22,13 +22,21 @@ In this lab you will learn the basics for using XMLHttpRequest Level2 or XHR L2.
 ## Prerequisites
 
 * Network Access, as we will be interacting with services in the cloud.
-* A service of which we can interact with. Must have CORS enabled. We have provided one for the duration of the labs at http://lightsout.co
+* A service of which we can interact with. Must have CORS enabled. We have provided one for the duration of the labs at `http://lightsout.co`
 
 **How do I know if the server is CORS enabled?**
 
 To find out if a site or service is CORS enabled the server should return you a response header like the following.
 	
 		Access-Control-Allow-Origin: *
+
+- - - 
+## Running the labs.
+
+Run ./default.htm in your browser.
+
+- - -
+## The Lab
 
 - - - 
 ### Step #1
@@ -39,7 +47,7 @@ Lets start by creating the basic XMLHttpRequest object.
 	
 		var xhr = new XMLHttpRequest();
 
-Most modern browswers have already implemented some part of the XMLHTTPRequest L2 specification but some older versions still haven't. In the case of IE we can check the browser and if it doesn't support it create the ActiveX version of it. 
+Most modern browsers have already implemented some part of the XMLHTTPRequest L2 specification but some older versions still haven't. In the case of IE we can check the browser and if it doesn't support it create the ActiveX version of it. 
 
 		var xhr; 
 
@@ -49,7 +57,7 @@ Most modern browswers have already implemented some part of the XMLHTTPRequest L
 		    xhr = new ActiveXObject("Microsoft.XMLHTTP");
 	    }
 
-In this lab we have created the XHR object for you. See that implemenation at top of each *step_.js* file.
+In this lab we have created the XHR object for you. See that implementation at top of each `step_.js` file.
 
 **Open**
 
@@ -63,16 +71,16 @@ Important to note the open method is part of a larger request namespace contatin
 
 **Supported Events**
 
-For purposes of this lab we're going to implement two XHR event, *onerror* and *onload*. You can find all of the supported events here: http://dvcs.w3.org/hg/xhr/raw-file/tip/Overview.html#event-handlers
+For purposes of this lab we're going to implement two XHR event, `onerror` and `onload`. You can find all of the supported events here: http://dvcs.w3.org/hg/xhr/raw-file/tip/Overview.html#event-handlers
 
 		xhr.onload = onLoaded;
 		xhr.onerror = onError;
 
-Of course doing that assumes we have a function called *onLoaded* and another *onError* already defined. Lets create them now.
+Of course doing that assumes we have a function called `onLoaded` and another `onError` already defined. Lets create them now.
 
 **function onError**
 
-onError is the function that will do our error handling. Given this is just a lab we're going to just take the error message and place it in our empty div called *#errors*. 
+onError is the function that will do our error handling. Given this is just a lab we're going to just take the error message and place it in our empty div called `#errors`. 
 
 		function onerror(e){
 			$('#errors').text(e.message);
@@ -80,20 +88,20 @@ onError is the function that will do our error handling. Given this is just a la
 
 **function onLoaded**
 
-In our callback **onLoaded** we can first check the status code from the response. If the status is a *200*, we can take the results *this.responseText* and append that to an empty div *#results* we have placed on the page.
+In our callback `onLoaded` we can first check the status code from the response. If the status is a `200`, we can take the results `this.responseText` and append that to an empty div `#results` we have placed on the page.
 
 		if (this.status == 200) {
 			var results = this.responseText;
 			$('#results').append(results);
 		}
 
-It's important to note that we are just grabbing the responseText already knowning a great deal about our endpoint. There is a number of methods focused purly on the response.
+It's important to note that we are just grabbing the responseText already knowing a great deal about our endpoint. There is a number of methods focused purely on the response.
 
 Spec: http://dvcs.w3.org/hg/xhr/raw-file/tip/Overview.html#response
 
 **Execution**
 
-At this point our object is configured and waiting to make the call. We do that by calling `send()` and passing along any revelant information if there is any. 
+At this point our object is configured and waiting to make the call. We do that by calling `send()` and passing along any relevant information if there is any. 
 
 		xhr.send();
 
@@ -105,7 +113,7 @@ In this step we are going to expand upon what we did in step 1. Like before the 
 
 **Open**
 
-Like last time we are going to perform a *get* on an endpoint but this time rather than being a web page it will be an API which returns either XML or JSON.
+Like last time we are going to perform a `get` on an endpoint but this time rather than being a web page it will be an API which returns either XML or JSON.
 
 		xhr.open('GET', 'http://developersmackdown.com/services/odata/Shows(PodcastId=1,ShowId=54)', true);
 
@@ -119,10 +127,10 @@ Spec: http://dvcs.w3.org/hg/xhr/raw-file/tip/Overview.html#the-setrequestheader-
 
 **Events**
 
-Like step 1 we need to registerd our functions with the correct events. This time our *onload* event we will want to parse the *responseText* as JSON since that is what we asked for.
+Like step 1 we need to registered our functions with the correct events. This time our `onload` event we will want to parse the `responseText` as JSON since that is what we asked for.
 
 		function onloaded(e){
-			
+
 			if (this.status == 200) {
 				var results = JSON.parse(this.responseText);
 				$('#results').text(results.d.Title);
@@ -132,7 +140,7 @@ Like step 1 we need to registerd our functions with the correct events. This tim
 
 ### Step #3
 
-*At time time of writing this, this step only correctly worked in Firefox.*
+**At time time of writing this, this step only correctly worked in Firefox.**
 
 CORS is more than just sharing text. One great thing you can do is work with blobs directly. In this step we're going to grab an avatar from gravatar.
 
@@ -148,7 +156,7 @@ We need to set our `responseType` to blob as we just want the image returned.
 
 **Events**
 
-Our response is a picture blob. What we want to do is create a new img element and url for our new blob everytime we get a response. To do this we use the createObjectURL passing our blob which will return and URL of which we can set the *src* of our img to.
+Our response is a picture blob. What we want to do is create a new IMG element and url for our new blob every time we get a response. To do this we use the createObjectURL passing our blob which will return and URL of which we can set the `src` of our IMG to.
 
 		function onloaded(e){
 			if (this.status == 200) {
@@ -180,13 +188,13 @@ FormData is a new object introduced with HTML5.
 
 **Open**
 
-As seen in all the previous steps with the only different being we would like to *POST*.
+As seen in all the previous steps with the only different being we would like to `POST`.
 
 		xhr.open('POST', 'http://lightsout.co/links/create', true);
 
 **Events** 
 
-After we setup the events we care about our onload is really just going to just check for a *200* and pop a modal box.
+After we setup the events we care about our `onload` is really just going to just check for a `200` and pop a modal box.
 
 		function onloaded(e){
 			
@@ -197,7 +205,7 @@ After we setup the events we care about our onload is really just going to just 
 
 **Send**
 
-Unlike the previous steps we want to *send* our form. we do that by 
+Unlike the previous steps we want to `send` our form. we do that by 
 
 		xhr.send(formData);
 
