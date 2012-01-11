@@ -244,7 +244,7 @@ Now, refresh the page and bask in the awesome mobile-ness of it all!
 
 1. Open the "3- CSS3\labs\transformations\begin\photos.html" file.
 
-2. Open "css/style.css" and create a style declaration that rotates the images by 25 degrees to the left:
+2. Open "css/desktop.css" and create a style declaration that rotates the images by 25 degrees to the left:
 	
 		img {
 			-moz-transform: rotate(-25deg); /* Firefox */ 
