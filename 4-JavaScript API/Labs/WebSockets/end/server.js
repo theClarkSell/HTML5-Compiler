@@ -33,7 +33,7 @@
     socket.on('echo', function(message) {
       util.puts('>> echo called: ' + message);
       //checkForName(message);
-      socket.send('echo': + message);
+      socket.send('echo: ' + message);
     });
     
     socket.on('message', function(message) {
