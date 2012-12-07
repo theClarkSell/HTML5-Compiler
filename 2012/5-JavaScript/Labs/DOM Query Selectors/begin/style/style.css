@@ -1,0 +1,22 @@
+
+.addBorder {
+	border: 6px dashed red;	
+}
+
+#messages {
+	margin: 5px;
+	padding: 5px;
+	color: red;
+}
+
+#list {
+	float: left;
+	list-style: none;
+	display: block;
+}
+
+#list li {
+	width: 100px;
+	margin: 5px;
+	padding: 5px;
+}

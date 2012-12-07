@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Instructions</title>
+    
+        <script src="./scripts/jquery-1.6.2.js" type="text/javascript"></script>
+        <script src="./scripts/Markdown.Converter.js" type="text/javascript"></script>
+        
+    </head>
+
+    <body>
+        <input id="markdownFile" type="file" /> </br> 
+
+        <div id="markdown"></div>
+        
+        <script>
+
+            // It doesn't look like you can grab local files outside of a webserver.. suck it security!
+             
+            var markdownFile = document.getElementById("markdownFile");
+            var markdownResult = document.getElementById("markdown");
+
+            var origin = self.location.origin;
+
+            if ('file://' !== origin ) {
+                markdownFile.style.display = 'none';
+            } else {
+                markdownResult.textContent = '';
+            };
+
+            document.getElementById('markdownFile').addEventListener('change', readFile, false);
+           
+            function readFile (e) {
+                    
+                var reader = new FileReader();
+                var f = e.target.files[0];
+
+                reader.onload = ( function (f) {
+                    return function(evt) {
+                        console.log('in onload for fileReader');
+
+                        displayMarkdown(evt.target.result);
+                    };
+                })(f);
+                
+                
+                reader.onerror = function (evt) {
+                    markdownResult.textContent = 'BIG OLE ERROR... Error Code: ' + reader.error.code + '  <- no clue what that really means';
+                };
+
+                reader.readAsText(f);
+
+            };
+
+            var displayMarkdown = function (toBeConverted) {
+
+                var convertedMarkdown = converter.makeHtml(toBeConverted);
+
+                $('#markdown').text('');
+                $('#markdown').append(convertedMarkdown);  
+            }
+
+
+            if ( 'http://' === origin ) {
+
+                ( function () {
+
+                    var xhr;
+
+                    if (window.XMLHttpRequest) {
+                        xhr = new XMLHttpRequest();
+                    
+                    } else if (window.ActiveXObject) {
+                        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                    
+                    }
+                
+                    var sUrl = "http://"
+                                 + self.location.hostname
+                                 + ":"
+                                 + self.location.port
+                                 + "/readme.md";
+
+
+                    xhr.open('GET', sUrl);
+                    
+                    xhr.onload = function (e) {
+                        displayMarkdown(this.resonseText)
+                    };
+                     
+                    xhr.onerror = function (e) {
+                        markdownResult.textContent = 'umm opps:' + e;
+                    };
+
+                    xhr.send();
+                     
+                })();
+            };    
+            
+        </script>
+               
+    </body>
+</html>

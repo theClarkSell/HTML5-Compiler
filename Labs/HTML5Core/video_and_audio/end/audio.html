@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>HTML5 Audio Demo</title>
+	<link rel="stylesheet" href="../css/style.css">
+    <script src="../../../../lib/js/jquery-1.7.1.min.js"></script>    
+</head>
+<body>
+    <audio id="audio" controls autoplay>
+    	<source src="../media/Nirvana-In Bloom.mp3" />
+		<source src="../media/Nirvana-In Bloom.wav" />
+    </audio>
+	<p>
+		Current Volume: <span id='vol'></span>
+	</p>
+	<p>
+        <input type="button" id="turnUp" value="Turn it up!" />
+        <input type="button" id="turnDown" value="Turn it down!" />
+    </p>
+
+    <script>
+		(function($) {
+        	var audio = document.querySelector('audio');
+			var vol = document.querySelector('#vol');
+
+			vol.innerText = Math.round(audio.volume*10);
+				
+	        $('#turnUp').click(function () {
+	            var aVol = audio.volume;
+			
+				if (audio.muted) {
+	                audio.muted = false;
+					vol.innerText = 1;
+				
+					return;
+	            }
+
+	            if (aVol+.1 < 10) {
+	                audio.volume = aVol + .1;
+					vol.innerText = Math.round(audio.volume*10);
+				}
+	        });
+
+	        $('#turnDown').click(function () {
+	            var aVol = audio.volume;
+
+	            if (aVol - .1 > 0) {
+	                audio.volume = aVol - .1;            
+					vol.innerText = Math.round(audio.volume*10);
+				} else {
+	                audio.muted = true;
+					vol.innerText = 0
+	            }
+	        });	
+			
+			
+		})(jQuery);        
+    </script>
+</body>
+</html>

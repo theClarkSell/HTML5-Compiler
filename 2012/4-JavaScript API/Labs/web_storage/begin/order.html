@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Fourth Coffee - Order</title>
+        <link rel="stylesheet" href="../css/Site.css" type="text/css" media="screen" charset="utf-8">
+		<script src="../../../../lib/js/modernizr-2.0.6.js" type="text/javascript"></script>
+        <script src="../../../../lib/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="page">
+            <div id="header">
+                <p class="site-title"><a href="#">Fourth Coffee</a></p>
+                <ul id="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+            <div id="body">
+                <ol id="orderProcess">
+				    <li><span class="step-number">1</span>Choose Item</li>
+				    <li class="current"><span class="step-number">2</span>Details &amp; Submit</li>
+				    <li><span class="step-number">3</span>Receipt</li>
+				</ol>
+				<h1>Place Your Order: Carrot Cake</h1>
+				<form action="" method="post" id="orderForm">
+				    <fieldset class="no-legend">
+				        <legend>Place Your Order</legend>
+				        <ol>
+				            <li>
+								<img class="product-image order-image" src="../assets/carrot_cake.jpg" alt="Image of Carrot Cake"/>								
+							</li>
+							<li class="name" >
+				                <label for="orderName">Your Name</label>
+				                <input type="text" class="field" id="orderName" placeholder="ex. Hugo Reyes" required />                
+				            </li>
+				            <li class="email">
+				                <label for="orderEmail">Your Email Address</label>
+				                <input type="email"  class="field" id="orderEmail" placeholder="ex. hugo@dharma.org" required />
+				            </li>
+				            <li class="website">
+				                <label for="orderWebsite">Your Web Site</label>
+				                <input type="url" class="field" id="orderWebsite" placeholder="ex. http://www.dharma.org" />
+				            </li>
+				            <li class="telephone">
+				                <label for="orderTelephone">Your Phone Number</label>
+				                <input type="tel" id="orderTelephone" class="field" placeholder="ex. (123) 456-7890" pattern="\(\d\d\d\) \d\d\d\-\d\d\d\d" title="(xxx) xxx-xxxx"/>                
+				            </li>
+				            <li class="requestedDate">
+				                <label for="deliveryDate">Requested Delivery Date</label>
+				                <input type="date" id="deliveryDate" class="field" />                
+				            </li>
+				            <li class="shiping">
+				                <label for="orderShipping">Shipping Address</label>
+				                <textarea rows="4" cols="20" id="orderShipping" class="field" required></textarea>
+				            </li>
+				            <li class="quantity">
+				                <label for="orderQty">Quantity</label>
+				                <input type="number" id="orderQty" name="orderQty" min=1 max=10 step=1 value=1 required />
+				                x
+				                <span id="orderPrice">$4.99</span>
+				                =
+				                <span id="orderTotal">$4.99</span>
+				            </li>
+				        </ol>
+						<div id="validationBlock">
+				            This form is currently <span id="validationState"></span>.
+				        </div>
+				        <p class="actions">
+				            <div id='time'></div>
+							<br />
+							<input type="hidden" name="ProductId" value="1" />
+				            <input type="submit" value="Place Order" />
+				            <input type="button" value="Save for Later" id="saveForLater" />
+				        </p>
+					</fieldset>
+				</form>
+            </div>
+            <div id="footer">
+                &copy;2011 - Fourth Coffee
+            </div>
+        </div>
+		<script src="js/formatDate.js"></script>
+		<script src="js/storage.js"></script>
+    </body>
+</html>

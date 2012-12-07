@@ -1,0 +1,12 @@
+{
+    "name": "CodeMash.HTML5.PreCompiler"
+  , "version": "0.0.1"
+  , "private": false
+  , "dependencies": {
+	  "coffee-script": ">= 1.1.3"
+	, "jasmine-node": "1.0.12"
+	, "socket.io": "0.8.7"
+	, "socket.io-client": "0.8.7"
+	, "node-static": "0.5.9"
+  }
+}

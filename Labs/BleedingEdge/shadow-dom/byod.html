@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<title>Build Your Own DOM</title>
+	<!-- (be07) Add some styles for our P tags -->
+	<style type="text/css" media="screen">
+		p {
+			font-size: 48px;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<h1>Enter the Shadow DOM!</h1>
+
+		<!-- (be05) Add a div to host the Shadow DOM -->
+		<div id="host"></div>
+
+		<!-- (be08) Add a p tag outside of the Shadow DOM -->
+		<p>I'm outside the Shadows...</p>
+	</div>
+
+	<!-- (be06) Add JS to activate our custom ShadowRoot -->
+		<script type="text/javascript">
+		var host = document.querySelector('#host'),
+			root = new WebKitShadowRoot(host),
+	    	para = document.createElement('p');
+
+	    para.textContent = "I've stepped into the shadows...";
+
+	    // (be09) add the applyAuthorStyle attribute to apply our css
+	    root.applyAuthorStyles = true;
+	    root.appendChild(para);
+
+	</script>
+</body>
+</html>

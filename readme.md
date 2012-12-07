@@ -1,9 +1,9 @@
-# CodeMash 2012 HTML5 Precompiler
+# CodeMash 2013 HTML5 Precompiler
 Contributors: Clark Sell & Brandon Satrom
 
 Tags: HTML5, JavaScript, CSS3
 
-This contains all of the source and presentations used for the 2012 CodeMash HTML5 Precompiler.
+This contains all of the source and presentations used for the 2013 CodeMash HTML5 Precompiler.
 
 ## Prerequisites
 
@@ -14,8 +14,8 @@ This contains all of the source and presentations used for the 2012 CodeMash HTM
 
 ### A Browser (Your Choice)
 
-* [Internet Explorer 9+](http://www.beautyoftheweb.com/)
 * [Chrome](https://www.google.com/chrome)
+* [Internet Explorer 9+](http://www.beautyoftheweb.com/)
 * [Firefox](http://www.mozilla.org/en-US/firefox/new/)
 * [Opera](http://www.opera.com/)
 * [Safari](http://www.apple.com/safari/download/)
@@ -40,31 +40,21 @@ This contains all of the source and presentations used for the 2012 CodeMash HTM
 * [jEdit](http://jedit.org/)
 * [Eclipse](http://www.eclipse.org/)
 
+## Slides
+
+### I - [Application Development with HTML5]()
+### II - [CSS3]()
+### III - [JavaScript Frameworks]()
+### IV - [The Bleeding Edge of HTML5]()
+
 ## Labs
 
-### I - [Introduction to HTML5](https://github.com/csell5/HTML5-Compiler/blob/master/1%20-Introduction%20to%20HTML5/IntroductionToHTML5.pptx)
+#### [HTML5](https://github.com/csell5/HTML5-Compiler/tree/master/Labs/HTML5Core)
+#### [CSS3](https://github.com/csell5/HTML5-Compiler/tree/master/Labs/CSS3)
+#### [JavaScript APIs](https://github.com/csell5/HTML5-Compiler/tree/master/Labs/JSAPIs)
+#### [JavaScript](https://github.com/csell5/HTML5-Compiler/tree/master/Labs/JavaScript)
+#### [The Bleeding Edge of HTML5](https://github.com/csell5/HTML5-Compiler/tree/master/Labs/BleedingEdge)
 
-### II - HTML5 Core
+## Other
 
-#### [Slides](https://github.com/csell5/HTML5-Compiler/blob/master/2-HTML5%20Core/HTML5Core.pptx)
-#### [Lab 1](https://github.com/csell5/HTML5-Compiler/tree/master/2-HTML5%20Core)
-
-### III - CSS3
-
-#### [Slides](https://github.com/csell5/HTML5-Compiler/blob/master/3-CSS3/CSS3.pptx)
-#### [Lab 2](https://github.com/csell5/HTML5-Compiler/tree/master/3-CSS3)
-
-### IV - JavaScript APIs
-
-#### [Slides](https://github.com/csell5/HTML5-Compiler/blob/master/4-JavaScript%20API/JavaScript%20APIs.pptx)
-#### [Lab 3](https://github.com/csell5/HTML5-Compiler/tree/master/4-JavaScript%20API)
-
-### V - JavaScript the Language
-
-#### [Slides](https://github.com/csell5/HTML5-Compiler/blob/master/5-JavaScript/JavaScript.pptx)
-#### [Lab 4](https://github.com/csell5/HTML5-Compiler/tree/master/5-JavaScript)
-
-### VI - Responsible Web Design
-
-#### [Slides](https://github.com/csell5/HTML5-Compiler/blob/master/6-Responsible%20Web%20Design/ResponsibleWebDesign.pptx)
-#### [Lab 5](https://github.com/csell5/HTML5-Compiler/tree/master/6-Responsible%20Web%20Design)
+### [2012 PreCompiler Content](https://github.com/csell5/HTML5-Compiler/tree/master/2012)
