@@ -1,0 +1,74 @@
+front end mvc frameworks
+
+	backbone
+	knockout http://knockoutjs.com/
+
+utility
+	- moment.js
+	- modernizr.js http://modernizr.com/
+	
+loaders
+	- require.js - http://requirejs.org/
+	- yepnope.js - http://yepnopejs.com/
+	
+DOM
+	jQuery - http://jquery.com
+	mootools
+	yui
+	dojo
+	
+UI
+	- kendoUI - http://www.kendoui.com/
+	- twitter bootstrap - http://twitter.github.com/bootstrap/
+	- handlebars - http://handlebarsjs.com/
+
+CSS
+	- LESS CSS - http://lesscss.org/
+	- SAAS CSS - http://sass-lang.com/
+
+Language 
+	- TypeScript - http://www.typescriptlang.org/
+	- Coffee Script - http://coffeescript.org/
+	- DART
+	
+Quality and Testing
+	qUnit - http://qunitjs.com/
+	jUnit
+	Jasmine - http://pivotal.github.com/jasmine/
+	http://www.jshint.com/
+	http://www.jslint.com/
+
+jsbin
+jsfiddle
+
+
+http://backbonejs.org/#
+https://github.com/douglascrockford/JSON-js
+http://underscorejs.org/
+http://jsbin.com/welcome/1/edit
+http://amplifyjs.com/
+http://momentjs.com/
+http://twitter.github.com/bootstrap/
+http://lesscss.org/
+http://knockoutjs.com/
+http://modernizr.com/
+http://handlebarsjs.com/
+http://www.kendoui.com/
+http://www.typescriptlang.org/
+http://sass-lang.com/
+http://coffeescript.org/
+http://lesscss.org/
+http://yepnopejs.com/
+http://requirejs.org/
+http://www.jshint.com/
+http://www.jslint.com/
+http://pivotal.github.com/jasmine/
+http://anvil-js.com/
+
+
+
+
+
+
+
+
